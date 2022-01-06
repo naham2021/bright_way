@@ -1,0 +1,16 @@
+<odoo>
+    <data>
+        <template id="qrcode_invoice_saudi" inherit_id="account.report_invoice_document">
+            <xpath expr="//div[@id='qrcode']" position="replace">
+                <div style="text-align:center">
+                <img
+                        style="height:120px;"
+                        t-att-src="'/report/barcode/?type=%s&amp;value=%s&amp;width=%s&amp;height=%s'%('QR', o.l10n_sa_qr_code_str, 150, 150)"/>
+                </div>
+
+            </xpath>
+        </template>
+
+
+    </data>
+</odoo>
