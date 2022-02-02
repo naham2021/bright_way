@@ -17,11 +17,15 @@
                     <tbody>
                         <div class="row">
                             <div class="col-4">
-                                <div class="text-left" style="font-weight:bold;color:blue; font-size: 18px;">BRIGHT WAY TRADING</div>
-                                <div class="text-left" style="font-weight:bold;color:#c35a03; font-size: 9px;">BRIGHT WAY FOR COMPUTER
+                                <div class="text-left" style="font-weight:bold;color:blue; font-size: 18px;">BRIGHT WAY
+                                    TRADING
+                                </div>
+                                <div class="text-left" style="font-weight:bold;color:#c35a03; font-size: 9px;">BRIGHT
+                                    WAY FOR COMPUTER
                                     AND COMMUNICATION
                                 </div>
-                                <div class="text-left" style="font-weight:bold;color:blue; font-size: 12px;">Vat Registeriation NO.:
+                                <div class="text-left" style="font-weight:bold;color:blue; font-size: 12px;">Vat
+                                    Registeriation NO.:
                                     <t t-esc="company.vat"/>
                                 </div>
                             </div>
@@ -30,14 +34,17 @@
                                      alt="Logo"/>
                             </div>
                             <div class="col-4">
-                                <div class="text-right" style="font-weight:bold;color:blue; font-size: 15px;">مؤسســـة الدرب الساطع
+                                <div class="text-right" style="font-weight:bold;color:blue; font-size: 15px;">مؤسســـة
+                                    الدرب الساطع
                                     للتجــارة
                                 </div>
-                                <div class="text-right" style="font-weight:bold;color:#c35a03;font-size: 12px;">الدرب الساطع لصيانه وتجاره
+                                <div class="text-right" style="font-weight:bold;color:#c35a03;font-size: 12px;">الدرب
+                                    الساطع لصيانه وتجاره
                                     الحاسب الالي
                                 </div>
-                                <div class="text-right" style="font-weight:bold;color:blue;font-size: 12px;">الرقم الضريبي:
-                                     ٣٠٠٢٣١٠٩٨٢٠٠٠٠٣
+                                <div class="text-right" style="font-weight:bold;color:blue;font-size: 12px;">الرقم
+                                    الضريبي:
+                                    ٣٠٠٢٣١٠٩٨٢٠٠٠٠٣
                                 </div>
                             </div>
                         </div>
@@ -94,17 +101,30 @@
                     <!--                        </div>-->
                     <!--                    </t>-->
                     <div class="page">
-<!--                        <h3 class="text-center">-->
-<!--                            فاتوره ضريبيه-->
-<!--                            <br/>-->
-<!--                            Tax Invoice-->
-<!--                        </h3>-->
+                        <!--                        <h3 class="text-center">-->
+                        <!--                            فاتوره ضريبيه-->
+                        <!--                            <br/>-->
+                        <!--                            Tax Invoice-->
+                        <!--                        </h3>-->
                         <div class="text-right" t-field="o.partner_id"/>
                         <div t-if="o.partner_id.vat" class="mt16 text-right">
                             <t t-if="o.company_id.country_id.vat_label" t-esc="o.company_id.country_id.vat_label"
                                id="inv_tax_id_label"/>
                             <t t-else="">Tax ID</t>:
                             <span t-field="o.partner_id.vat"/>
+                        </div>
+                        <div class="text-right">
+                            <span t-if="o.partner_id.street" t-field="o.partner_id.street"/>
+                            <span t-if="o.partner_id.street">,</span>
+                            <span t-if="o.partner_id.street2" t-field="o.partner_id.street2"/>
+                            <span t-if="o.partner_id.street2">,</span>
+                            <span t-if="o.partner_id.city" t-field="o.partner_id.city"/>
+                            <span t-if="o.partner_id.city">,</span>
+                            <span t-if="o.partner_id.state_id" t-field="o.partner_id.state_id.name"/>
+                            <span t-if="o.partner_id.state_id">,</span>
+                            <span t-if="o.partner_id.zip" t-field="o.partner_id.zip"/>
+                            <span t-if="o.partner_id.zip">,</span>
+                            <span t-if="o.partner_id.country_id" t-field="o.partner_id.country_id.name"/>
                         </div>
 
 
