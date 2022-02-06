@@ -283,7 +283,7 @@
                                                       groups="account.group_show_line_subtotals_tax_included"/>
                                             </td>
                                             <td class="text-right o_price_total">
-                                                <span class="text-nowrap" t-esc="tax"/>
+                                                <span class="text-nowrap" t-esc="round(tax, 2)"/>
                                             </td>
                                             <td class="text-right o_price_total">
                                                 <span class="text-nowrap" t-field="line.price_total"/>
