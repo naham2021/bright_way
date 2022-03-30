@@ -36,45 +36,45 @@
                     <img class="img-fluid about_team_img"
                          src="/bright_way_vat_invoice/static/src/img/WhatsApp Image 2022-03-29 at 6.43.15 PM.jpeg"/>
                 </div>
-                <table style="font-family: 'Amiri', serif; width:100%; font-size:20px; margin-bottom:5px">
-                    <tr style="border-left: 1px solid black; border-top: 1px solid black; border-right: 1px solid black;">
-                        <th class="text-center">
-                            BRIGHT WAY TRADING EST.
-                        </th>
-                        <th class="text-center">
-                            مؤسسة الدرب الساطع للتجارة
-                        </th>
-                    </tr>
-                    <tr style="border-left: 1px solid black; border-right: 1px solid black;">
-                        <th class="text-center">
-                            C.R.: 3002310982
-                        </th>
-                        <th class="text-center">
-                            س.ت : ٣٠٠٢٣١٠٩٨٢
-                        </th>
-                    </tr>
-                    <tr style="border-left: 1px solid black; border-right: 1px solid black;">
-                        <th class="text-center">
-                            VAT No.: 3002310982000003
-                        </th>
-                        <th class="text-center">
-                            الرقم الضريبي : ٣٠٠٢٣١٠٩٨٢٠٠٠٠٣
-                        </th>
-                    </tr>
-                    <tr style="border-left: 1px solid black; border-bottom: 1px solid black; border-right: 1px solid black;">
-                        <th class="text-center">
-                            Mobile: 00966546004000
-                        </th>
-                        <th class="text-center">
-                            الهاتف : ٠٠٩٦٦٥٤٦٠٠٤٠٠٠
-                        </th>
-                    </tr>
-                </table>
+<!--                <table style="font-family: 'Amiri', serif; width:100%; font-size:20px; margin-bottom:5px">-->
+<!--                    <tr style="border-left: 1px solid black; border-top: 1px solid black; border-right: 1px solid black;">-->
+<!--                        <th class="text-center">-->
+<!--                            BRIGHT WAY TRADING EST.-->
+<!--                        </th>-->
+<!--                        <th class="text-center">-->
+<!--                            مؤسسة الدرب الساطع للتجارة-->
+<!--                        </th>-->
+<!--                    </tr>-->
+<!--                    <tr style="border-left: 1px solid black; border-right: 1px solid black;">-->
+<!--                        <th class="text-center">-->
+<!--                            C.R.: 3002310982-->
+<!--                        </th>-->
+<!--                        <th class="text-center">-->
+<!--                            س.ت : ٣٠٠٢٣١٠٩٨٢-->
+<!--                        </th>-->
+<!--                    </tr>-->
+<!--                    <tr style="border-left: 1px solid black; border-right: 1px solid black;">-->
+<!--                        <th class="text-center">-->
+<!--                            VAT No.: 3002310982000003-->
+<!--                        </th>-->
+<!--                        <th class="text-center">-->
+<!--                            الرقم الضريبي : ٣٠٠٢٣١٠٩٨٢٠٠٠٠٣-->
+<!--                        </th>-->
+<!--                    </tr>-->
+<!--                    <tr style="border-left: 1px solid black; border-bottom: 1px solid black; border-right: 1px solid black;">-->
+<!--                        <th class="text-center">-->
+<!--                            Mobile: 00966546004000-->
+<!--                        </th>-->
+<!--                        <th class="text-center">-->
+<!--                            الهاتف : ٠٠٩٦٦٥٤٦٠٠٤٠٠٠-->
+<!--                        </th>-->
+<!--                    </tr>-->
+<!--                </table>-->
 
                 <table style="font-family: 'Amiri', serif; width:100%; font-size:25px; margin-bottom:5px">
                     <tr style="border-top: 1px solid black; border-left: 1px solid black; border-bottom: 1px solid black; border-right: 1px solid black;">
                         <th class="text-center">
-                            VAT INVOICE فاتورة ضريبية
+                            TAX INVOICE فاتورة ضريبية
                         </th>
                     </tr>
                 </table>
