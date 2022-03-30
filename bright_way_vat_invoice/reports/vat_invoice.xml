@@ -197,9 +197,9 @@
                             Tax Amount
                         </th>
                         <th style="border:1px solid; text-align:center;">
-                            المجموع (شامل ضريبة القيمة المضافة)
+                            المجموع + ض.ق.م
                             <br/>
-                            Item Sub Total(Including VAT)
+                            Total + VAT
                         </th>
                     </tr>
                     <t t-set="seq" t-value="0"/>
