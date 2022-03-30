@@ -1,0 +1,416 @@
+<odoo>
+    <data>
+
+        <record id="paperformat_vat_invoice" model="report.paperformat">
+            <field name="name">Vat Invoice</field>
+            <field name="default" eval="True"/>
+            <field name="format">A4</field>
+            <field name="page_height">0</field>
+            <field name="page_width">0</field>
+            <field name="orientation">Portrait</field>
+            <field name="margin_top">1</field>
+            <field name="margin_bottom">1</field>
+            <field name="margin_left">1</field>
+            <field name="margin_right">1</field>
+            <field name="header_line" eval="False"/>
+            <field name="header_spacing">35</field>
+            <field name="dpi">90</field>
+        </record>
+
+        <report
+                id="vat_invoice"
+                model="account.move"
+                report_type="qweb-pdf"
+                string="Vat Invoice"
+                name="bright_way_vat_invoice.vat_invoice_template"
+                file="bright_way_vat_invoice.vat_invoice_template"
+                paperformat="paperformat_vat_invoice"
+        />
+
+        <template id="vat_invoice_print_out">
+            <t t-call="web.internal_layout">
+                <style>
+                    @import url('https://fonts.googleapis.com/css2?family=Amiri&amp;display=swap');
+                </style>
+                <div class="text-center" style="margin-bottom:1px">
+                    <img class="img-fluid about_team_img"
+                         src="/bright_way_vat_invoice/static/src/img/WhatsApp Image 2022-03-29 at 6.43.15 PM.jpeg"/>
+                </div>
+                <table style="font-family: 'Amiri', serif; width:100%; font-size:20px; margin-bottom:5px">
+                    <tr style="border-left: 1px solid black; border-top: 1px solid black; border-right: 1px solid black;">
+                        <th class="text-center">
+                            BRIGHT WAY TRADING EST.
+                        </th>
+                        <th class="text-center">
+                            مؤسسة الدرب الساطع للتجارة
+                        </th>
+                    </tr>
+                    <tr style="border-left: 1px solid black; border-right: 1px solid black;">
+                        <th class="text-center">
+                            C.R.: 3002310982
+                        </th>
+                        <th class="text-center">
+                            س.ت : ٣٠٠٢٣١٠٩٨٢
+                        </th>
+                    </tr>
+                    <tr style="border-left: 1px solid black; border-right: 1px solid black;">
+                        <th class="text-center">
+                            VAT No.: 3002310982000003
+                        </th>
+                        <th class="text-center">
+                            الرقم الضريبي : ٣٠٠٢٣١٠٩٨٢٠٠٠٠٣
+                        </th>
+                    </tr>
+                    <tr style="border-left: 1px solid black; border-bottom: 1px solid black; border-right: 1px solid black;">
+                        <th class="text-center">
+                            Mobile: 00966546004000
+                        </th>
+                        <th class="text-center">
+                            الهاتف : ٠٠٩٦٦٥٤٦٠٠٤٠٠٠
+                        </th>
+                    </tr>
+                </table>
+
+                <table style="font-family: 'Amiri', serif; width:100%; font-size:25px; margin-bottom:5px">
+                    <tr style="border-top: 1px solid black; border-left: 1px solid black; border-bottom: 1px solid black; border-right: 1px solid black;">
+                        <th class="text-center">
+                            VAT INVOICE فاتورة ضريبية
+                        </th>
+                    </tr>
+                </table>
+
+                <div class="row" style="margin-bottom:5px">
+                    <div class="col-6" style="padding-right:2.5px">
+                        <table style="font-family: 'Amiri', serif; width:100%; font-size:20px;">
+                            <tr style="border-left: 1px solid black; border-top: 1px solid black; border-right: 1px solid black;">
+                                <th class="text-center">
+                                    Customer Name - اسم العميل
+                                </th>
+                                <!--                                <th class="text-center">-->
+                                <!--                                    Customer Name-->
+                                <!--                                </th>-->
+                            </tr>
+                            <tr style="border-left: 1px solid black; border-right: 1px solid black;">
+                                <th class="text-center">
+                                    <t t-esc="o.partner_id.name"/>
+                                </th>
+                            </tr>
+                            <tr style="border-left: 1px solid black; border-bottom: 1px solid black; border-right: 1px solid black;">
+                                <th class="text-center">
+                                    الرقم الضريبي :
+                                    <t t-esc="o.partner_id.vat"/>
+                                </th>
+                            </tr>
+                            <!--                            <tr style="border-left: 1px solid black; border-bottom: 1px solid black; border-right: 1px solid black;">-->
+                            <!--                                <th class="text-center">-->
+                            <!--                                    <t t-esc="o.partner_id.vat"/>-->
+                            <!--                                </th>-->
+                            <!--                            </tr>-->
+                        </table>
+                    </div>
+                    <div class="col-6" style="padding-left:2.5px">
+                        <table style="font-family: 'Amiri', serif; width:100%; font-size:20px;">
+                            <tr style="border-left: 1px solid black; border-top: 1px solid black; border-bottom: 1px solid black; border-right: 1px solid black;">
+                                <th class="text-center">
+                                    Payment Mode:
+                                    <t t-esc="o.invoice_type"/>
+                                </th>
+                                <th class="text-center">
+                                    طريقة الدفع
+                                </th>
+                            </tr>
+                            <tr style="border-left: 1px solid black; border-bottom: 1px solid black; border-right: 1px solid black;">
+                                <th class="text-center">
+                                    Invoice No.:
+                                    <t t-esc="o.name"/>
+                                </th>
+                                <th class="text-center">
+                                    رقم الفاتورة
+                                </th>
+                            </tr>
+                            <tr style="border-left: 1px solid black; border-bottom: 1px solid black; border-right: 1px solid black;">
+                                <th class="text-center">
+                                    Invoice Date:
+                                    <t t-esc="o.invoice_date"/>
+                                </th>
+                                <th class="text-center">
+                                    تاريخ
+                                </th>
+                            </tr>
+                            <tr style="border-left: 1px solid black; border-bottom: 1px solid black; border-right: 1px solid black;">
+                                <th class="text-center">
+                                    P.O No.:
+                                    <!--                                    <t t-esc="o.name"/>-->
+                                </th>
+                                <th class="text-center">
+                                    رقم ال
+                                </th>
+                            </tr>
+                            <tr style="border-left: 1px solid black; border-bottom: 1px solid black; border-right: 1px solid black;">
+                                <th class="text-center">
+                                    Delivery No.:
+                                    <!--                                    <t t-esc="o.name"/>-->
+                                </th>
+                                <th class="text-center">
+                                    رقم التسليم
+                                </th>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+
+                <table style="font-family: 'Amiri', serif; width:100%; border:1px solid; margin-bottom:5px">
+                    <tr style="border:1px solid;">
+                        <th style="border:1px solid; text-align:center;">
+                            رقم
+                            <br/>
+                            No.
+                        </th>
+                        <th style="border:1px solid; text-align:center;">
+                            تفاصيل السلع
+                            <br/>
+                            Nature of Goods
+                        </th>
+                        <th style="border:1px solid; text-align:center;">
+                            الكمية
+                            <br/>
+                            Qty
+                        </th>
+                        <th style="border:1px solid; text-align:center;">
+                            الوحدة
+                            <br/>
+                            Unit
+                        </th>
+                        <th style="border:1px solid; text-align:center;">
+                            سعر الوحدة
+                            <br/>
+                            Unit Price
+                        </th>
+                        <th style="border:1px solid; text-align:center;">
+                            المبلغ الخاضع للضريبة
+                            <br/>
+                            Taxable Amount
+                        </th>
+                        <th style="border:1px solid; text-align:center;">
+                            مبلغ الضريبة
+                            <br/>
+                            Tax Amount
+                        </th>
+                        <th style="border:1px solid; text-align:center;">
+                            المجموع (شامل ضريبة القيمة المضافة)
+                            <br/>
+                            Item Sub Total(Including VAT)
+                        </th>
+                    </tr>
+                    <t t-set="seq" t-value="0"/>
+                    <t t-foreach="o.invoice_line_ids" t-as="l">
+                        <t t-set="seq" t-value="seq+1"/>
+                        <tr style="font-size:18px;">
+                            <td style="border:1px solid; text-align:center;">
+                                <span t-esc="seq"/>
+                            </td>
+                            <td style="border:1px solid; text-align:center;">
+                                <t t-esc="l.product_id.name"/>
+                            </td>
+                            <td style="border:1px solid; text-align:center;">
+                                <t t-esc="l.quantity"/>
+                            </td>
+                            <td style="border:1px solid; text-align:center;">
+                                <t t-esc="l.product_uom_id.name"/>
+                            </td>
+                            <td style="border:1px solid; text-align:center;">
+                                <t t-esc="l.price_unit"/>
+                            </td>
+                            <td style="border:1px solid; text-align:center;">
+                                <t t-esc="l.price_unit*l.quantity"/>
+                            </td>
+                            <td style="border:1px solid; text-align:center;">
+                                <t t-esc="(l.tax_ids.amount/100)*l.price_unit*l.quantity"/>
+                            </td>
+                            <td style="border:1px solid; text-align:center;">
+                                <t t-esc="l.price_subtotal+(l.tax_ids.amount/100)*l.price_unit*l.quantity"/>
+                            </td>
+                        </tr>
+                    </t>
+                </table>
+
+                <div class="row" style="margin-bottom:5px">
+                    <div class="col-6" style="padding-right:2.5px">
+                        <table style="font-family: 'Amiri', serif; width:100%; font-size:20px;">
+                            <tr style="border-left: 1px solid black; border-top: 1px solid black; border-right: 1px solid black;">
+                                <th class="text-center">
+                                    Amount in Words - المبلغ بالكلمات
+                                </th>
+                                <!--                                <th class="text-center">-->
+                                <!--                                    المبلغ بالكلمات-->
+                                <!--                                </th>-->
+                            </tr>
+                            <tr style="border-left: 1px solid black; border-right: 1px solid black;">
+                                <td class="text-center">
+                                    <t t-esc="o.company_id.currency_id.ar_amount_to_text(o.amount_total)"/>
+                                </td>
+                            </tr>
+                            <tr style="border-left: 1px solid black; border-bottom: 1px solid black; border-right: 1px solid black;">
+                                <td class="text-center">
+                                    <t t-esc="o.company_id.currency_id.amount_to_text(o.amount_total)"/>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                    <div class="col-6" style="padding-left:2.5px">
+                        <table style="font-family: 'Amiri', serif; width:100%; font-size:20px;">
+                            <t t-set="total_unit_price" t-value="0"/>
+                            <t t-set="total_discount" t-value="0"/>
+                            <t t-set="total_taxable_amount" t-value="0"/>
+                            <t t-set="total_tax_amount" t-value="0"/>
+                            <t t-set="subtotal" t-value="0"/>
+                            <tr style="border-left: 1px solid black; border-bottom: 1px solid black; border-top: 1px solid black; border-right: 1px solid black;">
+                                <th class="text-center">
+                                    Total (Excluce VAT)
+                                </th>
+                                <th class="text-center">
+                                    الإجمالي
+                                </th>
+                                <th class="text-center" style="border-left: 1px solid black;">
+                                    <t t-foreach="o.invoice_line_ids" t-as="l">
+                                        <t t-set="total_unit_price" t-value="total_unit_price+l.price_unit"/>
+                                    </t>
+                                    <t t-esc="total_unit_price"/>
+                                </th>
+                            </tr>
+                            <tr style="border-left: 1px solid black; border-bottom: 1px solid black; border-right: 1px solid black;">
+                                <th class="text-center">
+                                    Discount
+                                </th>
+                                <th class="text-center">
+                                    مجموع الخصومات
+                                </th>
+                                <th class="text-center" style="border-left: 1px solid black;">
+                                    <t t-foreach="o.invoice_line_ids" t-as="l">
+                                        <t t-set="total_discount" t-value="total_discount+l.discount"/>
+                                    </t>
+                                    <t t-esc="total_discount"/>
+                                </th>
+                            </tr>
+                            <tr style="border-left: 1px solid black; border-bottom: 1px solid black; border-right: 1px solid black;">
+                                <th class="text-center">
+                                    Total Taxable Amount
+                                </th>
+                                <th class="text-center">
+                                    الإجمالي الخاضع للضريبة
+                                </th>
+                                <th class="text-center" style="border-left: 1px solid black;">
+                                    <t t-foreach="o.invoice_line_ids" t-as="l">
+                                        <t t-set="total_taxable_amount"
+                                           t-value="total_taxable_amount+(l.price_unit*l.quantity)"/>
+                                    </t>
+                                    <t t-esc="total_taxable_amount"/>
+                                </th>
+                            </tr>
+                            <tr style="border-left: 1px solid black; border-bottom: 1px solid black; border-right: 1px solid black;">
+                                <th class="text-center">
+                                    Total VAT
+                                </th>
+                                <th class="text-center">
+                                    مجموع ضريبة القيمة المضافة
+                                </th>
+                                <th class="text-center" style="border-left: 1px solid black;">
+                                    <t t-foreach="o.invoice_line_ids" t-as="l">
+                                        <t t-set="total_tax_amount"
+                                           t-value="total_tax_amount+((l.tax_ids.amount/100)*l.price_unit*l.quantity)"/>
+                                    </t>
+                                    <t t-esc="total_tax_amount"/>
+                                </th>
+                            </tr>
+                            <tr style="border-left: 1px solid black; border-bottom: 1px solid black; border-right: 1px solid black;">
+                                <th class="text-center">
+                                    Total Amount Due
+                                </th>
+                                <th class="text-center">
+                                    إجمالي المبلغ المستحق
+                                </th>
+                                <th class="text-center" style="border-left: 1px solid black;">
+                                    <t t-foreach="o.invoice_line_ids" t-as="l">
+                                        <t t-set="subtotal"
+                                           t-value="subtotal+(l.price_subtotal+(l.tax_ids.amount/100)*l.price_unit*l.quantity)"/>
+                                    </t>
+                                    <t t-esc="subtotal"/>
+                                </th>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+
+
+                <div class="row">
+                    <div class="col-3" style="padding-right:2.5px">
+                        <table style="font-family: 'Amiri', serif; width:100%;">
+                            <tr style="border-top: 1px solid black; border-left: 1px solid black; border-bottom: 1px solid black; border-right: 1px solid black; font-size:20px">
+                                <td class="text-center">
+                                    Total Quantity:
+                                    <t t-set="total_qty" t-value="0"/>
+                                    <t t-foreach="o.invoice_line_ids" t-as="l">
+                                        <t t-set="total_qty" t-value="total_qty+l.quantity"/>
+                                    </t>
+                                    <t t-esc="total_qty"/>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                    <div class="col-9" style="padding-left:2.5px">
+                        <table style="font-family: 'Amiri', serif; width:100%;">
+                            <tr style="border-top: 1px solid black; border-left: 1px solid black; border-bottom: 1px solid black; border-right: 1px solid black; font-size:20px">
+                                <td class="text-left">
+                                    Remarks:
+                                </td>
+                                <td class="text-right">
+                                    ملاحظات
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+
+                <div class="row text-center" style="margin-top:20px">
+                    <div dir="rtl" class="col-4 text-center" style="font-family: 'Amiri', serif; font-size:25px">
+                        اسم المندوب : ...............
+                        <br/>
+                        <br/>
+                        توقيعه : ..........................
+                    </div>
+                    <div class="col-4">
+                        <img style="height:120px;"
+                             t-att-src="'/report/barcode/?type=%s&amp;value=%s&amp;width=%s&amp;height=%s'%('QR', o.l10n_sa_qr_code_str, 150, 150)"/>
+                    </div>
+                    <div dir="rtl" class="col-4 text-center" style="font-family: 'Amiri', serif; font-size:25px">
+                        اسم المستلم : ...............
+                        <br/>
+                        <br/>
+                        توقيعه : ..........................
+                    </div>
+                </div>
+
+                <footer>
+                    <div class="text-center" style="position:absolute;top:1350px; page-break-inside: avoid;">
+                        <img class="img-fluid about_team_img"
+                             src="/bright_way_vat_invoice/static/src/img/WhatsApp Image 2022-03-29 at 6.43.27 PM.jpeg"/>
+                    </div>
+                </footer>
+            </t>
+        </template>
+
+        <template id="vat_invoice_template">
+            <t t-call="web.html_container">
+                <t t-foreach="docs" t-as="o">
+                    <div style="border: 1px solid black;">
+                        <div class="header"/>
+                        <div class="page">
+                            <t t-call="bright_way_vat_invoice.vat_invoice_print_out"/>
+                        </div>
+                    </div>
+                </t>
+            </t>
+        </template>
+
+    </data>
+</odoo>
