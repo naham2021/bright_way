@@ -225,7 +225,7 @@
                                 <t t-esc="l.price_unit*l.quantity"/>
                             </td>
                             <td style="border:1px solid; text-align:center;">
-                                <t t-esc="(l.tax_ids.amount/100)*l.price_unit*l.quantity"/>
+                                <t t-esc="round(((l.tax_ids.amount/100)*l.price_unit*l.quantity), 2)"/>
                             </td>
                             <td style="border:1px solid; text-align:center;">
                                 <t t-esc="l.price_subtotal+(l.tax_ids.amount/100)*l.price_unit*l.quantity"/>
@@ -319,7 +319,7 @@
                                         <t t-set="total_tax_amount"
                                            t-value="total_tax_amount+((l.tax_ids.amount/100)*l.price_unit*l.quantity)"/>
                                     </t>
-                                    <t t-esc="total_tax_amount"/>
+                                    <t t-esc="round(total_tax_amount, 2)"/>
                                 </th>
                             </tr>
                             <tr style="border-left: 1px solid black; border-bottom: 1px solid black; border-right: 1px solid black;">
@@ -391,7 +391,7 @@
                 </div>
 
                 <footer>
-                    <div class="text-center" style="position:absolute;top:1350px; page-break-inside: avoid;">
+                    <div class="text-center" style="position:absolute;top:1200px; page-break-inside: avoid;">
                         <img class="img-fluid about_team_img"
                              src="/bright_way_vat_invoice/static/src/img/WhatsApp Image 2022-03-29 at 6.43.27 PM.jpeg"/>
                     </div>
