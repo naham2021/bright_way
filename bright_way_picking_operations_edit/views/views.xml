@@ -28,9 +28,9 @@
                         <th class="text-center">
                             <strong>Unit Price</strong>
                         </th>
-                        <th class="text-center">
-                            <strong>Subtotal</strong>
-                        </th>
+<!--                        <th class="text-center">-->
+<!--                            <strong>Subtotal</strong>-->
+<!--                        </th>-->
                     </tr>
                 </thead>
             </xpath>
@@ -91,11 +91,11 @@
                                     </t>
                                 </td>
                                 <td>
-                                    <span t-field="move.price_unit"/>
+                                    <span t-field="move.cost"/>
                                 </td>
-                                <td>
-                                    <span t-field="move.cus_subtotal"/>
-                                </td>
+<!--                                <td>-->
+<!--                                    <span t-field="move.cus_subtotal"/>-->
+<!--                                </td>-->
                             </tr>
                         </t>
                     </t>
