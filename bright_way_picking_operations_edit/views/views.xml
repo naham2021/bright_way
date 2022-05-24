@@ -28,18 +28,19 @@
                         <th class="text-center">
                             <strong>Cost</strong>
                         </th>
-<!--                        <th class="text-center">-->
-<!--                            <strong>Subtotal</strong>-->
-<!--                        </th>-->
+                        <!--                        <th class="text-center">-->
+                        <!--                            <strong>Subtotal</strong>-->
+                        <!--                        </th>-->
                     </tr>
                 </thead>
             </xpath>
             <xpath expr="//table[1]/tbody" position="replace">
                 <tbody>
+                    <!--                    <t t-set="total" t-value="o.move_ids_without_package.cost"/>-->
                     <t t-foreach="o.move_ids_without_package.sorted(key=lambda m: m.product_id.id)" t-as="move">
                         <!-- In case you come accross duplicated lines, ask NIM or LAP -->
                         <t t-foreach="move.move_line_ids.sorted(key=lambda ml: ml.location_id.id)" t-as="ml">
-                            <tr>
+                            <tr style="border-bottom:1px solid black">
                                 <td>
                                     <span t-field="ml.product_id.display_name"/>
                                     <br/>
@@ -93,9 +94,19 @@
                                 <td>
                                     <span t-field="move.cost"/>
                                 </td>
-<!--                                <td>-->
-<!--                                    <span t-field="move.cus_subtotal"/>-->
+                                <!--                                <t t-esc="sum(move.cost for l in o.move_ids_without_package.order_line.filtered(lambda x: x.is_selected)) "/>-->
+                                <!--                                <td>-->
+                                <!--                                    <span t-field="move.cus_subtotal"/>-->
+                                <!--                                </td>-->
+                            </tr>
+                            <tr>
+                                <td colspan="5"/>
+<!--                                    <strong>Total:</strong>-->
 <!--                                </td>-->
+                                <td>
+                                    <t t-set="total" t-value="o.move_ids_without_package.cost"/>
+                                    <span t-esc="total"/>
+                                </td>
                             </tr>
                         </t>
                     </t>
