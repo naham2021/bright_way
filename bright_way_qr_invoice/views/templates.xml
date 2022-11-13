@@ -101,11 +101,28 @@
                     <!--                        </div>-->
                     <!--                    </t>-->
                     <div class="page">
-                                                <h3 class="text-center">
-                                                    فاتوره ضريبيه
-                                                    <br/>
-                                                    Tax Invoice
-                                                </h3>
+<!--                        <div class="row">-->
+<!--                            <div class="col-9" style="text-align:center; page-break-inside: avoid;">-->
+
+<!--                            </div>-->
+<!--                        </div>-->
+                        <div class="row" style="margin-bottom: 3em;">
+                            <div class="col-4">
+                                <img style="height:120px;"
+                                     t-att-src="'/report/barcode/?type=%s&amp;value=%s&amp;width=%s&amp;height=%s'%('QR', o.l10n_sa_qr_code_str, 150, 150)"/>
+
+                            </div>
+                            <div class="col-4">
+                                <h3 class="text-center">
+                                    فاتوره ضريبيه مبسطة
+                                    <br/>
+                                    Tax Invoice
+                                </h3>
+                            </div>
+                            <div class="col-4"/>
+                        </div>
+
+
                         <div class="text-right" t-field="o.partner_id"/>
                         <div t-if="o.partner_id.vat" class="mt16 text-right">
                             <t t-if="o.company_id.country_id.vat_label" t-esc="o.company_id.country_id.vat_label"
@@ -317,12 +334,12 @@
                                 </t>
                             </tbody>
                         </table>
-                        <div class="row">
-                            <div class="col-9" style="text-align:center; page-break-inside: avoid;">
-                                <img
-                                        style="height:120px;"
-                                        t-att-src="'/report/barcode/?type=%s&amp;value=%s&amp;width=%s&amp;height=%s'%('QR', o.l10n_sa_qr_code_str, 150, 150)"/>
-                            </div>
+                        <div class="row" dir="rtl">
+                            <!--                            <div class="col-9" style="text-align:center; page-break-inside: avoid;">-->
+                            <!--                                <img-->
+                            <!--                                        style="height:120px;"-->
+                            <!--                                        t-att-src="'/report/barcode/?type=%s&amp;value=%s&amp;width=%s&amp;height=%s'%('QR', o.l10n_sa_qr_code_str, 150, 150)"/>-->
+                            <!--                            </div>-->
 
 
                             <div class="clearfix">
