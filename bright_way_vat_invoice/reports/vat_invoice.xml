@@ -27,6 +27,10 @@
                 paperformat="paperformat_vat_invoice"
         />
 
+
+
+
+
         <template id="vat_invoice_print_out">
             <t t-call="web.internal_layout">
                 <style>
