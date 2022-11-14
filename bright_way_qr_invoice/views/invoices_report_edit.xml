@@ -5,7 +5,7 @@
             <xpath expr="//div[hasclass('page')]/div[hasclass('row')]/div[2]" position="replace">
                 <div class="col-4">
                     <h3 class="text-center">
-                        فاتوره ضريبيه
+                        فاتورة ضريبية
                         <br/>
                         Tax Invoice
                     </h3>
