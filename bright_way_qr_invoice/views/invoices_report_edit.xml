@@ -2,14 +2,12 @@
     <data>
         <template id="report_invoice_document_with_payments_edits"
                   inherit_id="account.report_invoice_document_with_payments">
-            <xpath expr="//div[hasclass('page')]/div[hasclass('row')]/div[2]" position="replace">
-                <div class="col-4">
+            <xpath expr="//div[hasclass('page')]/h3" position="replace">
                     <h3 class="text-center">
                         فاتورة ضريبية
                         <br/>
                         Tax Invoice
                     </h3>
-                </div>
             </xpath>
         </template>
 
