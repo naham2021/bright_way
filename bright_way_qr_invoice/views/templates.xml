@@ -84,11 +84,32 @@
             <!--            </div>-->
         </template>
 
+        <template id="bright_way_header_footer_empty">
+            <t t-if="not o and doc">
+                <t t-set="o" t-value="doc"/>
+            </t>
+
+            <t t-if="o and 'company_id' in o">
+                <t t-set="company" t-value="o.company_id.sudo()"/>
+            </t>
+            <t t-if="not o or not 'company_id' in o">
+                <t t-set="company" t-value="res_company"/>
+            </t>
+
+            <div t-attf-class="header o_company_#{company.id}_layout" t-att-style="report_header_style">
+
+            </div>
+
+
+            <div class="footer o_background_footer"/>
+            <!--            </div>-->
+        </template>
+
 
         <template id="qrcode_invoice_saudi" inherit_id="account.report_invoice_document">
             <xpath expr="//t[1]" position="replace">
                 <t t-call="web.basic_layout">
-                    <t t-call="bright_way_qr_invoice.bright_way_header_footer"/>
+                    <t t-call="bright_way_qr_invoice.bright_way_header_footer_empty"/>
                     <t t-set="o" t-value="o.with_context(lang=lang)"/>
                     <!--                    <t t-set="address">-->
                     <!--                        <address t-field="o.partner_id"-->
@@ -110,7 +131,7 @@
 
                             <div class="col-4">
                                 <h3 class="text-center">
-                                    فاتوره ضريبيه
+                                    فاتورة ضريبية
                                     <br/>
                                     Tax Invoice
                                 </h3>
@@ -118,6 +139,34 @@
                             <div class="col-4"></div>
 
                         </div>
+                        <br/>
+                        <br/>
+                        <!--                        <h3 class="text-center">-->
+                        <!--                            فاتورة ضريبية مبسطة-->
+                        <!--                            <br/>-->
+                        <!--                            Tax Invoice Simple-->
+                        <!--                        </h3>-->
+                        <!--                        <div class="row">-->
+                        <!--                            <div class="col-9" style="text-align:center; page-break-inside: avoid;">-->
+
+                        <!--                            </div>-->
+                        <!--                        </div>-->
+                        <!--                        <div class="row" style="margin-bottom: 3em;">-->
+                        <!--                            &lt;!&ndash;                            <div class="col-4">&ndash;&gt;-->
+                        <!--                            &lt;!&ndash;                                <img style="height:120px;"&ndash;&gt;-->
+                        <!--                            &lt;!&ndash;                                     t-att-src="'/report/barcode/?type=%s&amp;value=%s&amp;width=%s&amp;height=%s'%('QR', o.l10n_sa_qr_code_str, 150, 150)"/>&ndash;&gt;-->
+
+                        <!--                            &lt;!&ndash;                            </div>&ndash;&gt;-->
+                        <!--                            <div class="col-4">-->
+                        <!--                                <h3 class="text-center">-->
+                        <!--                                    فاتورة ضريبية مبسطة-->
+                        <!--                                    <br/>-->
+                        <!--                                    Tax Invoice Simple-->
+                        <!--                                </h3>-->
+                        <!--                            </div>-->
+                        <!--                            <div class="col-4"/>-->
+                        <!--                        </div>-->
+
 
                         <div class="text-right" t-field="o.partner_id"/>
                         <div t-if="o.partner_id.vat" class="mt16 text-right">
