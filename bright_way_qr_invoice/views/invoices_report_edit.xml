@@ -1,15 +1,15 @@
 <odoo>
     <data>
-        <template id="report_invoice_document_with_payments_edits"
-                  inherit_id="account.report_invoice_document_with_payments">
-            <xpath expr="//div[hasclass('page')]/h3" position="replace">
-                    <h3 class="text-center">
-                        فاتورة ضريبية
-                        <br/>
-                        Tax Invoice
-                    </h3>
-            </xpath>
-        </template>
+<!--        <template id="report_invoice_document_with_payments_edits"-->
+<!--                  inherit_id="account.report_invoice_document_with_payments">-->
+<!--            <xpath expr="//div[hasclass('page')]/h3" position="replace">-->
+<!--                    <h3 class="text-center">-->
+<!--                        فاتورة ضريبية-->
+<!--                        <br/>-->
+<!--                        Tax Invoice-->
+<!--                    </h3>-->
+<!--            </xpath>-->
+<!--        </template>-->
 
     </data>
 </odoo>

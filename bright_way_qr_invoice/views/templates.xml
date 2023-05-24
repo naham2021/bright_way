@@ -122,13 +122,30 @@
                     <!--                        </div>-->
                     <!--                    </t>-->
                     <div class="page">
+                        <div class="row">
+                            <div class="col-4">
+                                <img
+                                        style="height:120px;"
+                                        t-att-src="'/report/barcode/?type=%s&amp;value=%s&amp;width=%s&amp;height=%s'%('QR', o.l10n_sa_qr_code_str, 150, 150)"/>
+                            </div>
+
+                            <div class="col-4">
+                                <h3 class="text-center">
+                                    فاتورة ضريبية
+                                    <br/>
+                                    Tax Invoice
+                                </h3>
+                            </div>
+                            <div class="col-4"></div>
+
+                        </div>
                         <br/>
                         <br/>
-                        <h3 class="text-center">
-                            فاتورة ضريبية مبسطة
-                            <br/>
-                            Tax Invoice Simple
-                        </h3>
+                        <!--                        <h3 class="text-center">-->
+                        <!--                            فاتورة ضريبية مبسطة-->
+                        <!--                            <br/>-->
+                        <!--                            Tax Invoice Simple-->
+                        <!--                        </h3>-->
                         <!--                        <div class="row">-->
                         <!--                            <div class="col-9" style="text-align:center; page-break-inside: avoid;">-->
 
@@ -362,62 +379,62 @@
                                 </t>
                             </tbody>
                         </table>
-                        <div class="row">
-                            <div class="col-9" style="text-align:center; page-break-inside: avoid;">
-                                <img
-                                        style="height:120px;"
-                                        t-att-src="'/report/barcode/?type=%s&amp;value=%s&amp;width=%s&amp;height=%s'%('QR', o.l10n_sa_qr_code_str, 150, 150)"/>
-                            </div>
+                        <!--                        <div class="row">-->
+                        <!--                            <div class="col-9" style="text-align:center; page-break-inside: avoid;">-->
+                        <!--                                <img-->
+                        <!--                                        style="height:120px;"-->
+                        <!--                                        t-att-src="'/report/barcode/?type=%s&amp;value=%s&amp;width=%s&amp;height=%s'%('QR', o.l10n_sa_qr_code_str, 150, 150)"/>-->
+                        <!--                            </div>-->
 
 
-                            <div class="clearfix">
-                                <div id="total" class="col-3 text-right row">
+                        <div class="clearfix" style="margin-left:800px">
+                            <div id="total" class="col-3 text-right row">
 
 
-                                    <div t-attf-class="#{'col-6' if report_type != 'html' else 'col-sm-7 col-md-6'} ml-auto">
-                                        <table class="table table-sm" style="page-break-inside: avoid;">
-                                            <tr class="border-black o_subtotal" style="">
-                                                <td>
-                                                    <strong>Subtotal</strong>
-                                                </td>
-                                                <td class="text-right">
-                                                    <span t-field="o.amount_untaxed"/>
-                                                </td>
+                                <div t-attf-class="#{'col-6' if report_type != 'html' else 'col-sm-7 col-md-6'} ml-auto">
+                                    <table class="table table-sm" style="page-break-inside: avoid;">
+                                        <tr class="border-black o_subtotal" style="">
+                                            <td>
+                                                <strong>Subtotal</strong>
+                                            </td>
+                                            <td class="text-right">
+                                                <span t-field="o.amount_untaxed"/>
+                                            </td>
+                                        </tr>
+                                        <t t-foreach="o.amount_by_group" t-as="amount_by_group">
+                                            <tr style="">
+                                                <t t-if="len(o.line_ids.filtered(lambda line: line.tax_line_id)) in [0, 1] and o.amount_untaxed == amount_by_group[2]">
+                                                    <td>
+                                                        <span class="text-nowrap" t-esc="amount_by_group[0]"/>
+                                                    </td>
+                                                    <td class="text-right o_price_total">
+                                                        <span class="text-nowrap" t-esc="amount_by_group[3]"/>
+                                                    </td>
+                                                </t>
+                                                <t t-else="">
+                                                    <td>
+                                                        <span t-esc="amount_by_group[0]"/>
+                                                        <span class="text-nowrap">on
+                                                            <t t-esc="amount_by_group[4]"/>
+                                                        </span>
+                                                    </td>
+                                                    <td class="text-right o_price_total">
+                                                        <span class="text-nowrap" t-esc="amount_by_group[3]"/>
+                                                    </td>
+                                                </t>
                                             </tr>
-                                            <t t-foreach="o.amount_by_group" t-as="amount_by_group">
-                                                <tr style="">
-                                                    <t t-if="len(o.line_ids.filtered(lambda line: line.tax_line_id)) in [0, 1] and o.amount_untaxed == amount_by_group[2]">
-                                                        <td>
-                                                            <span class="text-nowrap" t-esc="amount_by_group[0]"/>
-                                                        </td>
-                                                        <td class="text-right o_price_total">
-                                                            <span class="text-nowrap" t-esc="amount_by_group[3]"/>
-                                                        </td>
-                                                    </t>
-                                                    <t t-else="">
-                                                        <td>
-                                                            <span t-esc="amount_by_group[0]"/>
-                                                            <span class="text-nowrap">on
-                                                                <t t-esc="amount_by_group[4]"/>
-                                                            </span>
-                                                        </td>
-                                                        <td class="text-right o_price_total">
-                                                            <span class="text-nowrap" t-esc="amount_by_group[3]"/>
-                                                        </td>
-                                                    </t>
-                                                </tr>
-                                            </t>
-                                            <tr class="border-black o_total">
-                                                <td>
-                                                    <strong>Total</strong>
-                                                </td>
-                                                <td class="text-right">
-                                                    <span class="text-nowrap" t-field="o.amount_total"/>
-                                                </td>
-                                            </tr>
-                                        </table>
-                                    </div>
+                                        </t>
+                                        <tr class="border-black o_total">
+                                            <td>
+                                                <strong>Total</strong>
+                                            </td>
+                                            <td class="text-right">
+                                                <span class="text-nowrap" t-field="o.amount_total"/>
+                                            </td>
+                                        </tr>
+                                    </table>
                                 </div>
+                                <!--                                </div>-->
                             </div>
                         </div>
                         <p t-if="o.type in ('out_invoice', 'in_refund')">
