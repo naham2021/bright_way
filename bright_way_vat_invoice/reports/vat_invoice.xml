@@ -36,9 +36,9 @@
                 <style>
                     @import url('https://fonts.googleapis.com/css2?family=Amiri&amp;display=swap');
                 </style>
-                <div class="text-center" style="margin-bottom:1px">
+                <div class="text-center" style="margin-top:-15px">
                     <img class="img-fluid about_team_img"
-                         src="/bright_way_vat_invoice/static/src/img/WhatsApp Image 2022-03-29 at 6.43.15 PM.jpeg"/>
+                         src="/bright_way_vat_invoice/static/src/img/footer.jpg"/>
                 </div>
 <!--                <table style="font-family: 'Amiri', serif; width:100%; font-size:20px; margin-bottom:5px">-->
 <!--                    <tr style="border-left: 1px solid black; border-top: 1px solid black; border-right: 1px solid black;">-->
@@ -397,7 +397,7 @@
                 <footer>
                     <div class="text-center" style="position:absolute;top:1200px; page-break-inside: avoid;">
                         <img class="img-fluid about_team_img"
-                             src="/bright_way_vat_invoice/static/src/img/WhatsApp Image 2022-03-29 at 6.43.27 PM.jpeg"/>
+                             src="/bright_way_vat_invoice/static/src/img/header.jpg"/>
                     </div>
                 </footer>
             </t>
