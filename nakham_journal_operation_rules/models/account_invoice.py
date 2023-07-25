@@ -92,22 +92,22 @@ class AccountMove(models.Model):
     def _onchange_journal_id_sale(self):
         current_user = self.env['res.users'].browse(self.env.uid)
         journal =  self.env['account.journal'].search([("user_ids", '=', current_user.id)], limit=1)
-        if self.type == "out_invoice":
+        if self.move_type == "out_invoice":
             journal =  self.env['account.journal'].search([("user_ids", '=', current_user.id),('type','=','sale')])
             return {
                 'domain': { 'journal_id': [('id', '=', journal.ids   )]}
             }
-        elif self.type == "in_invoice":
+        elif self.move_type == "in_invoice":
             journal =  self.env['account.journal'].search([("user_ids", '=', current_user.id),('type','=','purchase')])
             return {
                 'domain': {'journal_id': [('id', '=', journal.ids)]}
             }
-        elif self.type == "out_refund":
+        elif self.move_type == "out_refund":
             journal =  self.env['account.journal'].search([("user_ids", '=', current_user.id),('type','=','sale')])
             return {
                 'domain': { 'journal_id': [('id', '=', journal.ids   )]}
             }
-        elif self.type == "in_refund":
+        elif self.move_type == "in_refund":
             journal =  self.env['account.journal'].search([("user_ids", '=', current_user.id),('type','=','purchase')])
             return {
                 'domain': {'journal_id': [('id', '=', journal.ids)]}

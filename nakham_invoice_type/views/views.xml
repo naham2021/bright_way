@@ -7,7 +7,7 @@
             <field name="arch" type="xml">
                 <xpath expr="//field[@name='ref']" position="after">
                     <field name="invoice_type"
-                           attrs="{'invisible':[('type', 'not in', ['out_invoice','out_refund'])]}"/>
+                           attrs="{'invisible':[('move_type', 'not in', ['out_invoice','out_refund'])]}"/>
                 </xpath>
             </field>
         </record>

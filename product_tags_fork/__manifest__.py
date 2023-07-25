@@ -1,10 +1,9 @@
-# -*- coding: utf-8 -*-
 #
 #
 #    OpenERP, Open Source Management Solution
 #    Copyright (C) 2013 Julius Network Solutions SARL <contact@julius.fr>
 #    Copyright (C) 2015 credativ ltd. <info@credativ.co.uk>
-#    Copyright (C) 2017-2020 Artem Shurshilov <shurshilov.a@yandex.ru>
+#    Copyright (C) 2017-2020 Shurshilov Artem <shurshilov.a@yandex.ru>
 #
 #    This program is free software: you can redistribute it and/or modify
 #    it under the terms of the GNU Affero General Public License as
@@ -22,29 +21,28 @@
 #
 
 {
-    "name": "Product Tags v. 13",
-    "version": "13.0.0.0",
-    'license': 'LGPL-3',
+    "name": "Product Tags v. 14",
+    "version": "14.1.0.0",
+    "license": "LGPL-3",
     "author": "Shurshilov Artem",
-    'website': "http://www.eurodoo.com",
+    "website": "http://www.eurodoo.com",
     "category": "Sales Management",
     "depends": [
-        'product',
-        'sale',
+        "product",
+        "sale",
     ],
     "demo": [],
     "data": [
-        'security/ir.model.access.csv',
-        'product_view.xml',
+        "security/ir.model.access.csv",
+        "product_view.xml",
     ],
-    'images': [
-        'static/description/tags.png',
-        'static/description/kanban.png',
-     ],
-    'installable': True,
-    'application': False,
-    'auto_install': False,
-
+    "images": [
+        "static/description/tags.png",
+        "static/description/kanban.png",
+    ],
+    "installable": True,
+    "application": False,
+    "auto_install": False,
 }
 
 # vim:expandtab:smartindent:tabstop=4:softtabstop=4:shiftwidth=4:

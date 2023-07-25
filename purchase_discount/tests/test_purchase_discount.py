@@ -2,11 +2,11 @@
 # Copyright 2015-2019 Tecnativa - Pedro M. Baeza
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
 
-import odoo.tests.common as common
 from odoo import fields
+from odoo.tests.common import TransactionCase
 
 
-class TestPurchaseOrder(common.SavepointCase):
+class TestPurchaseOrder(TransactionCase):
     @classmethod
     def setUpClass(cls):
         super(TestPurchaseOrder, cls).setUpClass()
@@ -52,13 +52,14 @@ class TestPurchaseOrder(common.SavepointCase):
                 "product_uom": cls.product_1.uom_id.id,
                 "discount": 50.0,
                 "price_unit": 10.0,
+                "taxes_id": [],
             }
         )
         cls.account = cls.env["account.account"].create(
             {
                 "name": "Test account",
                 "code": "TEST",
-                "user_type_id": cls.env.ref("account.data_account_type_expenses").id,
+                "account_type": "expense",
             }
         )
         cls.tax = cls.env["account.tax"].create(
@@ -123,7 +124,7 @@ class TestPurchaseOrder(common.SavepointCase):
     def test_move_price_unit(self):
         self.purchase_order.button_confirm()
         picking = self.purchase_order.picking_ids
-        moves = picking.move_lines
+        moves = picking.move_ids
         move1 = moves.filtered(lambda x: x.purchase_line_id == self.po_line_1)
         self.assertEqual(move1.price_unit, 5)
         move2 = moves.filtered(lambda x: x.purchase_line_id == self.po_line_2)
@@ -132,11 +133,34 @@ class TestPurchaseOrder(common.SavepointCase):
         self.assertEqual(move3.price_unit, 10)
         # Confirm the picking to see the cost price
         move1.move_line_ids.qty_done = 1
-        picking.action_done()
+        picking._action_done()
         self.assertAlmostEqual(self.product_1.standard_price, 5.0)
         # Check data in PO remains the same - This is due to the hack
         self.assertAlmostEqual(self.po_line_1.price_unit, 10.0)
         self.assertAlmostEqual(self.po_line_1.discount, 50.0)
+
+    def test_move_price_unit_discount_sync(self):
+        self.purchase_order.button_confirm()
+        picking = self.purchase_order.picking_ids
+        moves = picking.move_ids
+        self.po_line_1.discount = 25
+        self.po_line_2.discount = 50
+        self.po_line_3.discount = 10
+        move1 = moves.filtered(lambda x: x.purchase_line_id == self.po_line_1)
+        self.assertEqual(move1.price_unit, 7.5)
+        move2 = moves.filtered(lambda x: x.purchase_line_id == self.po_line_2)
+        self.assertEqual(move2.price_unit, 115.0)
+        move3 = moves.filtered(lambda x: x.purchase_line_id == self.po_line_3)
+        self.assertEqual(move3.price_unit, 9.0)
+        self.po_line_1.price_unit = 1000
+        self.po_line_2.price_unit = 500
+        self.po_line_3.price_unit = 250
+        move1 = moves.filtered(lambda x: x.purchase_line_id == self.po_line_1)
+        self.assertEqual(move1.price_unit, 750.0)
+        move2 = moves.filtered(lambda x: x.purchase_line_id == self.po_line_2)
+        self.assertEqual(move2.price_unit, 250.0)
+        move3 = moves.filtered(lambda x: x.purchase_line_id == self.po_line_3)
+        self.assertEqual(move3.price_unit, 225.0)
 
     def test_report_price_unit(self):
         rec = self.env["purchase.report"].search(
@@ -148,7 +172,7 @@ class TestPurchaseOrder(common.SavepointCase):
     def test_invoice(self):
         invoice = self.env["account.move"].new(
             {
-                "type": "out_invoice",
+                "move_type": "out_invoice",
                 "partner_id": self.env.ref("base.res_partner_3").id,
                 "purchase_id": self.purchase_order.id,
             }

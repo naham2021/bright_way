@@ -4,7 +4,7 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Odoo Server 13.0\n"
+"Project-Id-Version: Odoo Server 14.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-02-26 09:53+0000\n"
 "PO-Revision-Date: 2019-02-26 09:53+0000\n"
@@ -19,8 +19,8 @@ msgstr ""
 #. module: stock_no_negative
 #: code:addons/stock_no_negative/models/stock_quant.py:0
 #, python-format
-msgid " lot '%s'"
-msgstr " lote '%s'"
+msgid " lot {}"
+msgstr " lote {}"
 
 #. module: stock_no_negative
 #: model:ir.model.fields,field_description:stock_no_negative.field_product_category__allow_negative_stock

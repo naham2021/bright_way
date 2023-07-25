@@ -1,4 +1,4 @@
-#-*- coding:utf-8 -*-
+# -*- coding:utf-8 -*-
 {
     'name': "RP Tree Hide Archive, Delete and Export Option",
     'version': '12.0.1.0.0',
@@ -10,10 +10,15 @@
     'depends': ['web'],
     'data': [
         'security/groups.xml',
-        'views/assets.xml',
+        # 'views/assets.xml',
     ],
     'images': [
         'static/description/banner.png',
     ],
     'installable': True,
+    'assets': {
+        "web.assets_backend": [
+            "rp_hide_action_tree_v12/static/src/js/hide_action_tree_optn.js",
+        ],
+    },
 }

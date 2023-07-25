@@ -3,9 +3,8 @@
 #
 #    Cybrosys Technologies Pvt. Ltd.
 #
-#    Copyright (C) 2019-TODAY Cybrosys Technologies(<https://www.cybrosys.com>).
-#    Author: Niyas Raphy @cybrosys(odoo@cybrosys.com)
-#
+#    Copyright (C) 2022-TODAY Cybrosys Technologies(<https://www.cybrosys.com>).
+#    Author: odoo@cybrosys.com
 #    You can modify it under the terms of the GNU AFFERO
 #    GENERAL PUBLIC LICENSE (AGPL v3), Version 3.
 #
@@ -22,18 +21,17 @@
 {
     'name': 'Payable And Receivable Amount',
     'summary': """Amount Payable & Receivable In Partner Form""",
-    'version': '13.0.1.0.1',
-    'description': """Amount Payable & Receivable In Partner Form, Odoo 13, Odoo13""",
+    'version': '16.0.1.0.0',
+    'description': """Amount Payable & Receivable In Partner Form""",
     'author': 'Cybrosys Techno Solutions',
     'company': 'Cybrosys Techno Solutions',
     'website': 'https://www.cybrosys.com',
     'category': 'Accounting',
-    'depends': ['base','sale','purchase'],
+    'depends': ['base', 'sale', 'purchase'],
     'license': 'AGPL-3',
     'data': [
         'views/total_payable_receivable_view.xml',
     ],
-    'demo': [],
     'images': ['static/description/banner.png'],
     'installable': True,
     'auto_install': False,

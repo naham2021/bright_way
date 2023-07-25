@@ -49,7 +49,7 @@
       <field name="groups_id" eval="[(6,0,[ref('journal_entries_group')])]"/>
     </record>
 
-    <record id="account.menu_action_account_moves_journal_misc" model="ir.ui.menu">
+    <record id="account.menu_finance_entries_accounting_miscellaneous" model="ir.ui.menu">
       <field name="groups_id" eval="[(6,0,[ref('journal_miscellaneous_group')])]"/>
     </record>
 
@@ -73,17 +73,17 @@
       <field name="groups_id" eval="[(6,0,[ref('accounting_deferred_expenses_group')])]"/>
     </record>
 
-    <record id="account.menu_action_manual_reconciliation" model="ir.ui.menu">
-      <field name="groups_id" eval="[(6,0,[ref('accounting_reconciliation_group')])]"/>
-    </record>
+<!--    <record id="account.menu_action_manual_reconciliation" model="ir.ui.menu">-->
+<!--      <field name="groups_id" eval="[(6,0,[ref('accounting_reconciliation_group')])]"/>-->
+<!--    </record>-->
 
     <record id="account_accountant.menu_action_change_lock_date" model="ir.ui.menu">
       <field name="groups_id" eval="[(6,0,[ref('accounting_lock_dates_group')])]"/>
     </record>
 
-    <record id="account.menu_action_tax_adjustment" model="ir.ui.menu">
-      <field name="groups_id" eval="[(6,0,[ref('accounting_tax_adjustments_group')])]"/>
-    </record>
+<!--    <record id="account.menu_action_tax_adjustment" model="ir.ui.menu">-->
+<!--      <field name="groups_id" eval="[(6,0,[ref('accounting_tax_adjustments_group')])]"/>-->
+<!--    </record>-->
 
     <record id="account.menu_action_account_moves_all" model="ir.ui.menu">
       <field name="groups_id" eval="[(6,0,[ref('accounting_journal_items_group')])]"/>

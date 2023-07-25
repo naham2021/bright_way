@@ -9,10 +9,14 @@
 
                 <xpath expr="//field[@name='location_dest_id']" position="replace">
                     <field name="location_dest_id"
-                           groups="stock.group_stock_multi_locations"
                            attrs="{'invisible': [('picking_type_code', '=', 'outgoing')]}"
                            domain="[('usage', '=', 'transit'), '|', ('company_id', '=', company_id), ('company_id', '=', False)]"
                     />
+                </xpath>
+                <xpath expr="//field[@name='location_dest_id']" position="attributes">
+                    <t groups="stock.group_stock_multi_locations">
+                        <attribute name="invisible">True</attribute>
+                    </t>
                 </xpath>
 
                 <xpath expr="//field[@name='location_id']" position="attributes">
