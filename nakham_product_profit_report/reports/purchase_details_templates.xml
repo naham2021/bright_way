@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <template id="purchase_details_tmpl">
+            <t t-call="web.html_container">
+                <style>
+                    tbody tr td{direction:ltr;}
+                </style>
+                <h1 style="text-align:center">مؤسسة النحام للتجارة</h1>
+                <p style="text-align:center">ربحية المنتجات خلال فترة</p>
+                <hr style="width:60%"/>
+                <div style="direction:ltr;width:100%;text-align:right">
+                    <div style="float:right;width:48%">
+                        <p>
+                            تاريخ من:
+                            <t t-esc="data['form']['date_from']"/>
+                        </p>
+                    </div>
+                    <div style="float:right;width:48%">
+                        <p>
+                            تاريخ الي:
+                            <t t-esc="data['form']['date_to']"/>
+                        </p>
+                    </div>
+                    <t t-if="data['form']['partner_id']">
+                        <div style="float:right;width:48%">
+                            <p t-if="data['form']['partner_id']">
+                                العميل:
+                                <t t-esc="data['form']['partner_id'][1]"/>
+                            </p>
+                        </div>
+                    </t>
+                    <t t-if="data['form']['salesman_id']">
+                        <div style="float:right;width:48%">
+                            <p t-if="data['form']['salesman_id']">
+                                البائع:
+                                <t t-esc="data['form']['salesman_id'][1]"/>
+                            </p>
+                        </div>
+                    </t>
+                </div>
+                <table style="border-collapse: collapse;direction:rtl;width:90%;margin:auto;border:1px solid;">
+                    <thead style="text-align:center">
+                        <tr>
+                            <th style="border:1px solid;">رقم المستند</th>
+                            <th style="border:1px solid;">تاريخ التحرير</th>
+                            <th style="border:1px solid;">المنتج</th>
+                            <th style="border:1px solid;">الوحدة</th>
+                            <th style="border:1px solid;">الكمية</th>
+                            <th style="border:1px solid;">إجمالي البيع</th>
+                            <th style="border:1px solid;">إجمالي التكلفة</th>
+                            <th style="border:1px solid;">الربح</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr t-foreach="lines" t-as="line">
+                            <td style="border:1px solid;" t-foreach="line" t-as="field">
+                                <span t-esc="line[field]"/>
+                            </td>
+                        </tr>
+                        <tr style="text-align:right">
+                            <td style="border:1px solid;text-align:left" colspan="4">الاجمالي</td>
+                            <td style="border:1px solid;">
+                                <t t-esc="total_quantity"/>
+                            </td>
+                            <td style="border:1px solid;">
+                                <t t-esc="total_total_price"/>
+                            </td>
+                            <td style="border:1px solid;">
+                                <t t-esc="total_total_cost"/>
+                            </td>
+                            <td style="border:1px solid;">
+                                <t t-esc="total_total_profit"/>
+                            </td>
+                        </tr>
+                    </tbody>
+
+                </table>
+            </t>
+        </template>
+
+    </data>
+</odoo>
