@@ -33,7 +33,7 @@
     ],
     "demo": [],
     "data": [
-        "security/ir.model.access.csv",
+        # "security/ir.model.access.csv",
         "product_view.xml",
     ],
     "images": [

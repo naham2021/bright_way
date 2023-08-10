@@ -25,9 +25,9 @@
                 <xpath expr="//field[@name='partner_id']" position="replace">
                                 <field name="partner_id"  attrs="{'required': [('state', '=', 'draft'), ('payment_type', 'in', ('inbound', 'outbound'))], 'invisible': [('payment_type', 'not in', ('inbound', 'outbound'))]}" context="{'default_is_company': True}"/>
                 </xpath>
-                  <t groups="'nakham_no_quick_create.group_quick_create">
-                        <attribute name="invisible">True</attribute>
-                    </t>
+<!--                  <t groups="nakham_no_quick_create.group_quick_create">-->
+<!--                        <attribute name="invisible">True</attribute>-->
+<!--                    </t>-->
 
             </field>
         </record>

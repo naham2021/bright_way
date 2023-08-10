@@ -34,9 +34,9 @@
 
                     <!--                            <field name="partner_id" widget="res_partner_many2one" context="{'res_partner_search_mode': 'customer', 'show_address': 1, 'show_vat': True}" options='{"always_reload": True,"no_create": True,"no_create_edit": True, "no_quick_create": True}'/>-->
                 </xpath>
-                  <t groups="'nakham_no_quick_create.group_quick_create">
-                        <attribute name="invisible">True</attribute>
-                    </t>
+<!--                  <t groups="nakham_no_quick_create.group_quick_create">-->
+<!--                        <attribute name="invisible">True</attribute>-->
+<!--                    </t>-->
 
             </field>
         </record>
