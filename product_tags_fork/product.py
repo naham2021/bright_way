@@ -75,16 +75,15 @@ from odoo import api, fields, models
 #         return tags.name_get()
 #
 #
-# class ProductTemplate(models.Model):
-#     _inherit = "product.template"
-#
-#     tag_ids = fields.Many2many(
-#         string="Tags",
-#         comodel_name="product.tag",
-#         relation="product_product_tag_rel",
-#         column1="tag_id",
-#         column2="product_id",
-#     )
+class ProductTemplate(models.Model):
+    _inherit = "product.template"
 
+    tag_ids = fields.Many2many(
+        string="Tags",
+        comodel_name="product.tag",
+        relation="product_product_tag_rel",
+        column1="tag_id",
+        column2="product_id",
+    )
 
 # vim:expandtab:smartindent:tabstop=4:softtabstop=4:shiftwidth=4:
