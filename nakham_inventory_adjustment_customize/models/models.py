@@ -32,10 +32,10 @@
 #         return res
 #
 #
-# class AccountMove(models.Model):
-#     _inherit = 'account.move'
-#
-#     inventory_id = fields.Many2one(comodel_name="stock.inventory")
+class AccountMove(models.Model):
+    _inherit = 'account.move'
+
+    inventory_id = fields.Many2one(comodel_name="stock.inventory")
 #
 #
 # class StockMove(models.Model):
