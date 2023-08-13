@@ -1,6 +1,8 @@
 # # -*- coding: utf-8 -*-
-#
-# from odoo import models, fields, api, _
+
+from odoo import models, fields, api, _
+
+
 # from datetime import datetime
 #
 #
@@ -35,10 +37,10 @@
 #         return res
 #
 #
-# class AccountMove(models.Model):
-#     _inherit = 'account.move'
-#
-#     inventory_id = fields.Many2one(comodel_name="stock.inventory")
+class AccountMove(models.Model):
+    _inherit = 'account.move'
+
+    inventory_id = fields.Many2one(comodel_name="stock.inventory")
 #
 #
 # class StockMove(models.Model):
