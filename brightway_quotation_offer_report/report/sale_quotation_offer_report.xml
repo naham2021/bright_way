@@ -1,0 +1,526 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <record id="paperformat_portrait_offer_report_template" model="report.paperformat">
+            <field name="name">paperformat_portrait_offer_report_template</field>
+            <field name="default" eval="True"/>
+            <field name="format">A4</field>
+            <field name="page_height">0</field>
+            <field name="page_width">0</field>
+            <field name="orientation">Portrait</field>
+            <field name="margin_top">27</field>
+            <field name="margin_bottom">30</field>
+            <field name="margin_left">10</field>
+            <field name="margin_right">10</field>
+            <field name="header_line" eval="False"/>
+            <field name="header_spacing">22</field>
+            <field name="dpi">90</field>
+        </record>
+
+        <template id="adding_narcotic_substances_report_page">
+            <style>
+                @import url('https://fonts.googleapis.com/css2?family=Scheherazade&amp;display=swap');
+            </style>
+            <div class="page text-right"
+                 style="font-family: 'Scheherazade', serif;font-size: 18px;margin-left:10px;margin-right:10px;min-height:500px;min-wight:900px">
+                <div style="font-weight: bold;text-align:center; font-size: 30px;">
+                    <u>
+                    </u>
+                </div>
+                <br></br>
+                <br></br>
+                <table class="table table-bordered"
+                       style="line-height:0.5px;font-size:20px;text-align:center;margin-top:5px;margin-bottom:5px;">
+                    <tr>
+                        <th colspan="12"
+                            style="background-color: #d2d4d1;border-left: 1px solid black;border-top: 1px solid black;border-right: 1px solid black;border-bottom: 1px solid black;">
+                            QUOTATION INFO
+                        </th>
+                    </tr>
+                    <tr style="border-left: 1px solid black;border-top: 1px solid black;border-right: 1px solid black;border-bottom: 1px solid black;">
+                        <th>Number</th>
+                        <td style="background-color: #ffffff;">
+                            <span t-field="o.name"/>
+                        </td>
+                    </tr>
+
+                    <tr style="background-color: #dcdcdc;border-left: 1px solid black;border-top: 1px solid black;border-right: 1px solid black;border-bottom: 1px solid black;">
+                        <th>Date</th>
+                        <td style="background-color: #dcdcdc;">
+                            <span t-field="o.date_order"/>
+                        </td>
+                    </tr>
+                    <tr style="border-left: 1px solid black;border-top: 1px solid black;border-right: 1px solid black;border-bottom: 1px solid black;">
+                        <th>VAT ID No</th>
+                        <td style="background-color: #ffffff;">
+                            <span t-field="o.partner_id.vat"/>
+                        </td>
+                    </tr>
+                </table>
+                <br></br>
+                <table class="table table-bordered"
+                       style="line-height:0.5px;font-size:20px;text-align:center;margin-top:5px;margin-bottom:5px;">
+                    <tr>
+                        <th colspan="12"
+                            style="background-color: #dcdcdc;border-left: 1px solid black;border-top: 1px solid black;border-right: 1px solid black;border-bottom: 1px solid black;">
+                            CUSTOMER INFO
+                        </th>
+                    </tr>
+                    <tr style="border-left: 1px solid black;border-top: 1px solid black;border-right: 1px solid black;border-bottom: 1px solid black;">
+                        <th>Attention To</th>
+                        <td style="background-color: #ffffff;">
+                            <span t-field="o.partner_id.name"/>
+                        </td>
+                    </tr>
+                    <tr style="background-color: #dcdcdc;border-left: 1px solid black;border-top: 1px solid black;border-right: 1px solid black;border-bottom: 1px solid black;">
+                        <th>Submitted To</th>
+                        <td style="background-color: #dcdcdc;">
+                            <span t-field="o.partner_id.company_id.name"/>
+                        </td>
+                    </tr>
+                    <tr style="border-left: 1px solid black;border-top: 1px solid black;border-right: 1px solid black;border-bottom: 1px solid black;">
+                        <th>Mobile</th>
+                        <td style="background-color: #ffffff;">
+                            <span t-field="o.partner_id.mobile"/>
+                        </td>
+                    </tr>
+                    <tr style="background-color: #dcdcdc;border-left: 1px solid black;border-top: 1px solid black;border-right: 1px solid black;border-bottom: 1px solid black;">
+                        <th>e-mail</th>
+                        <td style="background-color: #dcdcdc;">
+                            <span t-field="o.partner_id.email"/>
+                        </td>
+                    </tr>
+                </table>
+                <br></br>
+
+                <table class="table table-sm o_main_table">
+                    <thead dir="rtl"
+                           style="background-color: #34ac4c;color: white;border-left: 1px solid black;border-top: 1px solid black;border-right: 1px solid black;border-bottom: 1px solid black;text-align:center;">
+                        <tr dir="rtl">
+                            <th name="th_item_no" style="color: white;">رقم الصنف</th>
+                            <th name="th_name" style="color: white;">اسم الصنف</th>
+                            <th name="th_unit" style="color: white;">الوحدة</th>
+                            <th name="th_qty" style="color: white;">الكمية</th>
+                            <th name="th_total_untaxed" style="color: white;">السعر بدون الضريبة</th>
+                            <th name="th_taxes" style="color: white;">قيمة الضريبة</th>
+                            <th name="th_total_taxed" style="color: white;">الاجمالى شامل الضريبة</th>
+                        </tr>
+                        <tr>
+                            <th name="th_item_no" style="color: white;">Item No</th>
+                            <th name="th_name" style="color: white;">Item Name</th>
+                            <th name="th_unit" style="color: white;">Unit</th>
+                            <th name="th_qty" style="color: white;">Qty</th>
+                            <th name="th_total_untaxed" style="color: white;">Price W/O Vat</th>
+                            <th name="th_taxes" style="color: white;">Vat</th>
+                            <th name="th_total_taxed" style="color: white;">Total WT Vat</th>
+                        </tr>
+                    </thead>
+                    <tbody dir="rtl"
+                           style="border-left: 1px solid black;border-top: 1px solid black;border-right: 1px solid black;border-bottom: 1px solid black;text-align:center;">
+                        <t t-set="line_count" t-value="0"/>
+                        <tr t-foreach="o.order_line" t-as="line">
+                            <t t-set="line_count" t-value="line_count + 1"/>
+                            <t t-if="line_count % 2 == 1">
+                                <tr style="background-color:#ffffff;">
+                                    <td style="border-left: 1px solid black;border-top: 1px solid black;border-right: 1px solid black;border-bottom: 1px solid black;text-align:center;">
+                                        <span t-esc="line.product_id.default_code"/>
+                                    </td>
+                                    <td style="border-left: 1px solid black;border-top: 1px solid black;border-right: 1px solid black;border-bottom: 1px solid black;text-align:center;">
+                                        <span t-esc="line.product_id.name"/>
+                                    </td>
+
+                                    <td style="border-left: 1px solid black;border-top: 1px solid black;border-right: 1px solid black;border-bottom: 1px solid black;text-align:center;">
+                                        <span t-esc="line.product_uom.name"/>
+                                    </td>
+
+                                    <td style="border-left: 1px solid black;border-top: 1px solid black;border-right: 1px solid black;border-bottom: 1px solid black;text-align:center;">
+                                        <span t-esc="line.product_uom_qty"/>
+                                    </td>
+
+                                    <td style="border-left: 1px solid black;border-top: 1px solid black;border-right: 1px solid black;border-bottom: 1px solid black;text-align:center;">
+                                        <span t-esc="line.price_unit"/>
+                                    </td>
+
+                                    <td style="border-left: 1px solid black;border-top: 1px solid black;border-right: 1px solid black;border-bottom: 1px solid black;text-align:center;">
+                                        <span t-esc="', '.join(map(lambda x: (x.description or x.name), line.tax_id))"/>
+                                    </td>
+
+                                    <td style="border-left: 1px solid black;border-top: 1px solid black;border-right: 1px solid black;border-bottom: 1px solid black;text-align:center;">
+                                        <span t-esc="line.price_subtotal"/>
+                                    </td>
+                                </tr>
+                            </t>
+
+                            <t t-if="line_count % 2 == 0">
+                                <tr style="background-color:#dcdcdc;">
+                                    <td style="border-left: 1px solid black;border-top: 1px solid black;border-right: 1px solid black;border-bottom: 1px solid black;text-align:center;">
+                                        <span t-esc="line.product_id.default_code"/>
+                                    </td>
+                                    <td style="border-left: 1px solid black;border-top: 1px solid black;border-right: 1px solid black;border-bottom: 1px solid black;text-align:center;">
+                                        <span t-esc="line.product_id.name"/>
+                                    </td>
+
+                                    <td style="border-left: 1px solid black;border-top: 1px solid black;border-right: 1px solid black;border-bottom: 1px solid black;text-align:center;">
+                                        <span t-esc="line.product_uom.name"/>
+                                    </td>
+
+                                    <td style="border-left: 1px solid black;border-top: 1px solid black;border-right: 1px solid black;border-bottom: 1px solid black;text-align:center;">
+                                        <span t-esc="line.product_uom_qty"/>
+                                    </td>
+
+                                    <td style="border-left: 1px solid black;border-top: 1px solid black;border-right: 1px solid black;border-bottom: 1px solid black;text-align:center;">
+                                        <span t-esc="line.price_unit"/>
+                                    </td>
+
+                                    <td style="border-left: 1px solid black;border-top: 1px solid black;border-right: 1px solid black;border-bottom: 1px solid black;text-align:center;">
+                                        <span t-esc="', '.join(map(lambda x: (x.description or x.name), line.tax_id))"/>
+                                    </td>
+
+                                    <td style="border-left: 1px solid black;border-top: 1px solid black;border-right: 1px solid black;border-bottom: 1px solid black;text-align:center;">
+                                        <span t-esc="line.price_subtotal"/>
+                                    </td>
+                                </tr>
+                            </t>
+
+                        </tr>
+                    </tbody>
+                </table>
+
+                <br></br>
+                <br></br>
+
+                <table class="table table-bordered" dir="rtl"
+                       style="line-height:0.5px;font-size:20px;text-align:center;margin-top:5px;margin-bottom:5px;border-top: 1px solid black;border-bottom: 1px solid black;border-right: 1px solid black;border-left: 1px solid black;">
+
+                    <tr>
+                        <td rowspan="6">
+                            <span>ملاحظـات</span>
+                        </td>
+                        <td rowspan="6">
+                            <span t-field="o.note"/>
+                        </td>
+                        <td>
+                            <span>الاجمالي قبل الخصم - Total Grand</span>
+                        </td>
+                        <td>
+                            <span t-field="o.amount_untaxed"/>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>
+                            <span>الخصم - Disc</span>
+                        </td>
+                        <td>
+                            <span t-esc="o.amount_undiscounted - o.amount_untaxed"/>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>
+                            <span>صافي المبلغ بعد الخصم - discount after NET</span>
+                        </td>
+                        <td>
+                            <span t-esc="o.amount_untaxed + (o.amount_undiscounted - o.amount_untaxed)"/>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>
+                            <span>Vat -ضريبة</span>
+                        </td>
+                        <td>
+                            <span t-esc="o.amount_tax"/>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>
+                            <span>Total With Vat -الضريبه شامل المبلغ</span>
+                        </td>
+                        <td>
+                            <span t-esc="o.amount_total"/>
+                        </td>
+                    </tr>
+                </table>
+                <br></br>
+                <br></br>
+                <br></br>
+                <table class="table table-bordered"
+                       style="line-height:0.5px;font-size:20px;text-align:center;margin-top:5px;margin-bottom:5px;">
+                    <tr>
+                        <th colspan="12"
+                            style="background-color: #dcdcdc;border-left: 1px solid black;border-top: 1px solid black;border-right: 1px solid black;border-bottom: 1px solid black;">
+                            Terms AND Conditions
+                        </th>
+                    </tr>
+                    <tr style="border-left: 1px solid black;border-top: 1px solid black;border-right: 1px solid black;border-bottom: 1px solid black;">
+                        <th>Quotation Validation</th>
+                        <td style="background-color: #ffffff;">
+                            <span t-field="o.date_order"/>
+                        </td>
+                    </tr>
+                    <tr style="background-color: #dcdcdc;border-left: 1px solid black;border-top: 1px solid black;border-right: 1px solid black;border-bottom: 1px solid black;">
+                        <th>Warranty</th>
+                        <td style="background-color: #dcdcdc;">
+                        </td>
+                    </tr>
+                    <tr style="border-left: 1px solid black;border-top: 1px solid black;border-right: 1px solid black;border-bottom: 1px solid black;">
+                        <th>Payment</th>
+                        <td style="background-color: #ffffff;">
+                        </td>
+                    </tr>
+                    <tr style="background-color: #dcdcdc;border-left: 1px solid black;border-top: 1px solid black;border-right: 1px solid black;border-bottom: 1px solid black;">
+                        <th>BankAccount</th>
+                        <td style="background-color: #dcdcdc;">
+                        </td>
+                    </tr>
+                    <tr style="border-left: 1px solid black;border-top: 1px solid black;border-right: 1px solid black;border-bottom: 1px solid black;">
+                        <th>IBAN No</th>
+                        <td style="background-color: #ffffff;">
+                        </td>
+                    </tr>
+                    <tr style="background-color: #dcdcdc;border-left: 1px solid black;border-top: 1px solid black;border-right: 1px solid black;border-bottom: 1px solid black;">
+                        <th>Supplying Duration</th>
+                        <td style="background-color: #dcdcdc;">
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            <p style="page-break-after:always;"></p>
+            <div class="page text-right" dir="rtl"
+                 style="font-family: 'Scheherazade', serif;font-size: 16px;margin-left:10px;margin-right:10px">
+                <br></br>
+                <div class="row text-center">
+                    <div class="col-6"
+                         style="border-left: 1px solid black;border-top: 1px solid black;border-right: 1px solid black;border-bottom: 1px solid black;">
+                        <strong>الشروط العامة</strong>
+                        <ul style="margin-right:5px;">
+                            <li>لا يمكن إلغاء التراخيص المشتراة بمجرد طلبها من البائعين / المصنعين .</li>
+                            <li>يبدأ الالتزام بتاريخ التسليم اعتبارا من تاريخ دفع المستحقات المالية لامر الشراء و تأكيد
+                                الشركات المصنعة لتوافر المواد و الاستعداد للشحنات و الإرسال من مراكز التصنيع ، بما فى
+                                ذلم مستندات الشحن المطلوبة من قبل الهيئة السعودية للمواصفات و المقاييس و الجودة (SASO)
+                                لن يعتبر هذا خرقا لالتزامات شركة تقدم العالمية فى عقد الشراء (ان وجد) لشروط التسليم
+                            </li>
+                            <li>شركة تقدم العالمية لا تخضع للمساءلة ، ولن تتحمل أى عواقب لتأخير التسليم بسبب فترة موافقة
+                                وزارة الداخلية السعودية - وحدة التراخيص الأمنية للإفراج عن الشحنات ذات الصلة لأنظمة CCTV
+                                / FAS / كشف التسلل من خلال التخليص الجمركى فى المنافذ الجمركية السعودية
+                            </li>
+                        </ul>
+                        <strong>الشروط و الاحكام :</strong>
+                        <strong>الأسعار</strong>
+                        <p>جميع الأسعار بالريال السعودى</p>
+                        <strong>الصلاحية :</strong>
+                        <p>هذا العرض صالح لمدة 5 أيام عمل ، ما لم يذكر</p>
+                        <strong>التسليم :</strong>
+                        <ul style="margin-right:5px;">
+                            <li>4-5 أيام لبنود المخزون و 8-12 اسبوعيا للمواد غير المخزنة من امر الشراء المؤكد مقابل شروط
+                                الدفع ، مالم يذكر
+                            </li>
+                            <li>هذه الاسعار مخفضة و حصرية لهذا المشروع فقط</li>
+                            <li>هذا الاقتراح عبارة عن وحدة واحدة ، ولا يمكن طلب عناصرها بشكل فردى أو تغييرها ما لم يتم
+                                النص على ذلك أو بموافقة شركة تقدم العالمية المسبقة
+                            </li>
+                        </ul>
+                        <strong>السرية :</strong>
+                        <p>الاسعار و بيانات البائع سرية ، ولن يكشف المشترى أو يتيح لأى طرف ثالث بيانات البائع أو غيرها
+                            من
+                            المعلومات السرية و الملكية دون الحصول على إذن كتابى مسبق من الشركة العالمية
+                        </p>
+
+
+                    </div>
+                    <div class="col-6"
+                         style="border-left: 1px solid black;border-top: 1px solid black;border-right: 1px solid black;border-bottom: 1px solid black;">
+                        <strong>General Conditions</strong>
+                        <ul style="margin-right:10px;">
+                            <li>Purchased license cannot be Canceled Once They Have Been Ordered From Vendors/
+                                Manufacturers
+                            </li>
+                            <li>Delivery Time Will Be Disclosed In Terms Of Releasing Po Payment Term, Manufacturers
+                                Confirmation For Materials Availability and to be ready for shipping / dispatch From
+                                Manufacturer / Vendor Hub, including required shipping documents by saudi standards
+                                ,
+                                metrology and quality Organization (SASO) . This will not be considered as breach by
+                                AICTEC abligations in the pranch contract (if any) for delivery terms
+                            </li>
+                            <li>AICTEC is unaccountable , and it will not afford for any consequences for delivery
+                                delay
+                                due to period of saudi MOI - CLU approval to release the related shipments of CCTV /
+                                FAS
+                                / intrusion detection systems through customs clearance at saudi customs ports .
+                            </li>
+                        </ul>
+                        <strong>Terms And Conditions</strong>
+                        <strong>Prices</strong>
+                        <p>All Prices are in SAR</p>
+                        <strong>Validity</strong>
+                        <p>This quotation is Valid for 5 Working days , unless stated</p>
+
+                        <strong>Payment</strong>
+                        <p>100% in advance or as per perior agreement</p>
+                        <strong>Delivery Time </strong>
+                        <ul style="margin-right:10px;">
+                            <li>4-5 days for stock items and 8-12 weeks for non-stock materials from confirmed Po
+                                against Payment terms , unless stated
+                            </li>
+                            <li>these prices are discounted and exclusively for this project only , the same prices
+                                might
+                            </li>
+                            <li>this proposal is one unit , and its items cannot be ordered individually or changed
+                                unless stated or prior AICTEC agree
+                            </li>
+                        </ul>
+                        <strong>Confidentiality</strong>
+                        <p>prices &amp; seller's data are confidential , buyer will not disclose or make available
+                            to any third party the seller's data or other propriety and confidential information
+                            without seller's prior written authorization from AICTEC
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <p style="page-break-after:always;"></p>
+            <div class="page text-right" dir="rtl"
+                 style="font-family: 'Scheherazade', serif;font-size: 15px;margin-left:10px;margin-right:10px">
+
+                <div class="row text-center">
+                    <div class="col-6"
+                         style="border-left: 1px solid black;border-top: 1px solid black;border-right: 1px solid black;border-bottom: 1px solid black;">
+                        <strong>الضمان:</strong>
+                        <p>وفقا للقوانين المعمول بها فى المملكة ما لم يذكر</p>
+                        <strong>تركيب المنتج:</strong>
+                        <ul style="margin-right:5px;">
+                            <li>التركيب و البرمجة و التثبيت و الاختبار و التدريب و التشغيل غير المشمول بالتسعيرة الا اذا
+                                تم تضمينها
+                            </li>
+                            <li>يجب ان يتأكد الشريك من ان الائحة النهائية للمواد تحتوى على جميع المكونات و الخيارات و
+                                الملحقات اللازمة لتوفير الوظائف للمشروع المعين
+                            </li>
+                            <li>ستخضع مواد المخزون و شروط التوفر للبيع المسبق فى حالة عدم وجود طلب رسمى و اصدار شروط
+                                الدفع
+                            </li>
+                            <li>هناك اضطراب فى التوريد فى جميع انحاء العالم ونقص فى مواد الالكترونيات مثل اشباه الموصلات
+                                ورقائق الحاسوب والاسعار المتقلبة بسبب جائحة كوفيد 19 لذلك ينصح بشدة بتوقع حدوث تأخير فى
+                                التسليم و يجب على المستخدمين النهائيين تطبيق حالات الطوارئ المناسبة
+                            </li>
+                            <li>مراجعة و قبول الشروط و الاحكام و الملاحظات الخاصة بمقترح شركة تقدم العالمية التجارى من
+                                قبل المشترى هنا تعتبر جزءا من امر الشراء للعميل
+                            </li>
+                        </ul>
+
+                    </div>
+                    <div class="col-6"
+                         style="border-left: 1px solid black;border-top: 1px solid black;border-right: 1px solid black;border-bottom: 1px solid black;">
+                        <strong>Warranty</strong>
+                        <p>As Per KSA standers unless stated</p>
+                        <strong>Product Installation</strong>
+                        <ul style="margin-right:10px;">
+                            <li>installation , configuration, testing &amp; commissioning of the above is not included
+                                unless stated
+                            </li>
+                            <li>the partner should ensure that the ultimate BOM contains all necessary components ,
+                                options and accessories to provice the functions for the designated project
+                            </li>
+                            <li>Stock materials and availability terms will be subjected to prior sale , in the case of
+                                not an officialordering material and releasing payment terms
+                            </li>
+                            <li>there is a worldwide supply chain disruption , electronics material shortage such as
+                                semiconductor and computer chips and volatile prices , due to the covid 19 pandemic ,
+                                thus , it is highly advised to delays in delivery should be applied by the end-users
+                            </li>
+                            <li>review and accept conditions, terms , and notes of commercial proposal by buyer here are
+                                considered part of intended client PO
+                            </li>
+                        </ul>
+                    </div>
+
+                </div>
+                <br></br>
+                <br></br>
+                <table class="table table-bordered" dir="ltr"
+                       style="line-height:0.5px;font-size:20px;text-align:center;margin-top:5px;margin-bottom:5px;">
+                    <tr>
+                        <th colspan="12"
+                            style="background-color: #dcdcdc;border-left: 1px solid black;border-top: 1px solid black;border-right: 1px solid black;border-bottom: 1px solid black;">
+                            Sender
+                        </th>
+                    </tr>
+                    <tr style="border-left: 1px solid black;border-top: 1px solid black;border-right: 1px solid black;border-bottom: 1px solid black;">
+                        <th>Sender</th>
+                        <td style="background-color: #ffffff;">
+                        </td>
+                    </tr>
+                    <tr style="background-color: #dcdcdc;border-left: 1px solid black;border-top: 1px solid black;border-right: 1px solid black;border-bottom: 1px solid black;">
+                        <th>Mobile</th>
+                        <td style="background-color: #dcdcdc;">
+                            <span t-field="o.partner_id.mobile"/>
+                        </td>
+                    </tr>
+                    <tr style="border-left: 1px solid black;border-top: 1px solid black;border-right: 1px solid black;border-bottom: 1px solid black;">
+                        <th>Email</th>
+                        <td style="background-color: #ffffff;">
+                            <span t-field="o.partner_id.email"/>
+                        </td>
+                    </tr>
+                    <tr style="background-color: #dcdcdc;border-left: 1px solid black;border-top: 1px solid black;border-right: 1px solid black;border-bottom: 1px solid black;">
+                        <th>Job Position</th>
+                        <td style="background-color: #dcdcdc;">
+                            <span/>
+                        </td>
+                    </tr>
+                </table>
+
+            </div>
+        </template>
+
+
+        <template id="portrait_report_template_header">
+            <style>
+                @import url('https://fonts.googleapis.com/css2?family=Scheherazade&amp;display=swap');
+            </style>
+            <div class="header" style="font-family: 'Scheherazade', serif;font-size:17px;font-weight:bold;">
+                <div class="row text-center">
+                    <div class="col-12">
+                        <img src='/brightway_quotation_offer_report/static/src/logo/header.jpeg' alt="Company Logo"
+                             style="width:1020px;height:120px;"/>
+                    </div>
+                </div>
+            </div>
+            <div class="footer" style="font-family: 'Scheherazade', serif;">
+                <div class="row text-center">
+                    <div class="col-12">
+                        <img src='/brightway_quotation_offer_report/static/src/logo/footer.jpeg' alt="Company Logo"
+                             style="width:1020px;height:120px;"/>
+                    </div>
+
+                </div>
+            </div>
+        </template>
+
+
+        <template id="offer_report_temp">
+            <t t-call="web.html_container">
+                <t t-foreach="docs" t-as="o">
+                    <t t-call="brightway_quotation_offer_report.portrait_report_template_header"/>
+                    <t t-call="web.external_layout">
+                        <t t-call="brightway_quotation_offer_report.adding_narcotic_substances_report_page"/>
+                    </t>
+                </t>
+            </t>
+        </template>
+
+        <record id="offer_report" model="ir.actions.report">
+            <field name="name">عرض سعر</field>
+            <field name="model">sale.order</field>
+            <field name="report_type">qweb-pdf</field>
+            <field name="report_name">brightway_quotation_offer_report.offer_report_temp</field>
+            <field name="report_file">brightway_quotation_offer_report.offer_report_temp</field>
+            <field name="binding_model_id" ref="sale.model_sale_order"/>
+            <field name="paperformat_id"
+                   ref="brightway_quotation_offer_report.paperformat_portrait_offer_report_template"/>
+        </record>
+
+
+    </data>
+</odoo>
