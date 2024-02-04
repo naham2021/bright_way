@@ -239,7 +239,7 @@
                 </table>
                 <br></br>
             </div>
-            
+
             <p style="page-break-after:always;"></p>
             <div class="page text-right" dir="rtl"
                  style="font-family: 'Scheherazade', serif;font-size: 16px;margin-left:10px;margin-right:10px">
@@ -261,31 +261,36 @@
                     <tr style="background-color: #dcdcdc;border-left: 1px solid black;border-top: 1px solid black;border-right: 1px solid black;border-bottom: 1px solid black;">
                         <th>Warranty</th>
                         <td style="background-color: #dcdcdc;">
+                            <span t-field="o.warranty"/>
                         </td>
                     </tr>
                     <tr style="border-left: 1px solid black;border-top: 1px solid black;border-right: 1px solid black;border-bottom: 1px solid black;">
                         <th>Payment</th>
                         <td style="background-color: #ffffff;">
+                            <span t-field="o.payment_id.name"/>
                         </td>
                     </tr>
                     <tr style="background-color: #dcdcdc;border-left: 1px solid black;border-top: 1px solid black;border-right: 1px solid black;border-bottom: 1px solid black;">
                         <th>BankAccount</th>
                         <td style="background-color: #dcdcdc;">
+                            <span t-field="o.bank_account"/>
                         </td>
                     </tr>
                     <tr style="border-left: 1px solid black;border-top: 1px solid black;border-right: 1px solid black;border-bottom: 1px solid black;">
                         <th>IBAN No</th>
                         <td style="background-color: #ffffff;">
+                            <span t-field="o.partner_id.iban_no"/>
                         </td>
                     </tr>
                     <tr style="background-color: #dcdcdc;border-left: 1px solid black;border-top: 1px solid black;border-right: 1px solid black;border-bottom: 1px solid black;">
                         <th>Supplying Duration</th>
                         <td style="background-color: #dcdcdc;">
+                            <span t-field="o.partner_id.supplying_duration"/>
                         </td>
                     </tr>
                 </table>
-
             </div>
+
             <p style="page-break-after:always;"></p>
             <div class="page text-right" dir="rtl"
                  style="font-family: 'Scheherazade', serif;font-size: 16px;margin-left:10px;margin-right:10px">
@@ -294,148 +299,21 @@
                     <div class="col-6"
                          style="border-left: 1px solid black;border-top: 1px solid black;border-right: 1px solid black;border-bottom: 1px solid black;">
                         <strong>الشروط العامة</strong>
-                        <ul style="margin-right:5px;">
-                            <li>لا يمكن إلغاء التراخيص المشتراة بمجرد طلبها من البائعين / المصنعين .</li>
-                            <li>يبدأ الالتزام بتاريخ التسليم اعتبارا من تاريخ دفع المستحقات المالية لامر الشراء و تأكيد
-                                الشركات المصنعة لتوافر المواد و الاستعداد للشحنات و الإرسال من مراكز التصنيع ، بما فى
-                                ذلم مستندات الشحن المطلوبة من قبل الهيئة السعودية للمواصفات و المقاييس و الجودة (SASO)
-                                لن يعتبر هذا خرقا لالتزامات شركة تقدم العالمية فى عقد الشراء (ان وجد) لشروط التسليم
-                            </li>
-                            <li>شركة تقدم العالمية لا تخضع للمساءلة ، ولن تتحمل أى عواقب لتأخير التسليم بسبب فترة موافقة
-                                وزارة الداخلية السعودية - وحدة التراخيص الأمنية للإفراج عن الشحنات ذات الصلة لأنظمة CCTV
-                                / FAS / كشف التسلل من خلال التخليص الجمركى فى المنافذ الجمركية السعودية
-                            </li>
-                        </ul>
-                        <strong>الشروط و الاحكام :</strong>
-                        <strong>الأسعار</strong>
-                        <p>جميع الأسعار بالريال السعودى</p>
-                        <strong>الصلاحية :</strong>
-                        <p>هذا العرض صالح لمدة 5 أيام عمل ، ما لم يذكر</p>
-                        <strong>التسليم :</strong>
-                        <ul style="margin-right:5px;">
-                            <li>4-5 أيام لبنود المخزون و 8-12 اسبوعيا للمواد غير المخزنة من امر الشراء المؤكد مقابل شروط
-                                الدفع ، مالم يذكر
-                            </li>
-                            <li>هذه الاسعار مخفضة و حصرية لهذا المشروع فقط</li>
-                            <li>هذا الاقتراح عبارة عن وحدة واحدة ، ولا يمكن طلب عناصرها بشكل فردى أو تغييرها ما لم يتم
-                                النص على ذلك أو بموافقة شركة تقدم العالمية المسبقة
-                            </li>
-                        </ul>
-                        <strong>السرية :</strong>
-                        <p>الاسعار و بيانات البائع سرية ، ولن يكشف المشترى أو يتيح لأى طرف ثالث بيانات البائع أو غيرها
-                            من
-                            المعلومات السرية و الملكية دون الحصول على إذن كتابى مسبق من الشركة العالمية
-                        </p>
-
-
+                        <span t-field="o.terms_ar"/>
                     </div>
+
                     <div class="col-6"
                          style="border-left: 1px solid black;border-top: 1px solid black;border-right: 1px solid black;border-bottom: 1px solid black;">
                         <strong>General Conditions</strong>
-                        <ul style="margin-right:10px;">
-                            <li>Purchased license cannot be Canceled Once They Have Been Ordered From Vendors/
-                                Manufacturers
-                            </li>
-                            <li>Delivery Time Will Be Disclosed In Terms Of Releasing Po Payment Term, Manufacturers
-                                Confirmation For Materials Availability and to be ready for shipping / dispatch From
-                                Manufacturer / Vendor Hub, including required shipping documents by saudi standards
-                                ,
-                                metrology and quality Organization (SASO) . This will not be considered as breach by
-                                AICTEC abligations in the pranch contract (if any) for delivery terms
-                            </li>
-                            <li>AICTEC is unaccountable , and it will not afford for any consequences for delivery
-                                delay
-                                due to period of saudi MOI - CLU approval to release the related shipments of CCTV /
-                                FAS
-                                / intrusion detection systems through customs clearance at saudi customs ports .
-                            </li>
-                        </ul>
-                        <strong>Terms And Conditions</strong>
-                        <strong>Prices</strong>
-                        <p>All Prices are in SAR</p>
-                        <strong>Validity</strong>
-                        <p>This quotation is Valid for 5 Working days , unless stated</p>
-
-                        <strong>Payment</strong>
-                        <p>100% in advance or as per perior agreement</p>
-                        <strong>Delivery Time</strong>
-                        <ul style="margin-right:10px;">
-                            <li>4-5 days for stock items and 8-12 weeks for non-stock materials from confirmed Po
-                                against Payment terms , unless stated
-                            </li>
-                            <li>these prices are discounted and exclusively for this project only , the same prices
-                                might
-                            </li>
-                            <li>this proposal is one unit , and its items cannot be ordered individually or changed
-                                unless stated or prior AICTEC agree
-                            </li>
-                        </ul>
-                        <strong>Confidentiality</strong>
-                        <p>prices &amp; seller's data are confidential , buyer will not disclose or make available
-                            to any third party the seller's data or other propriety and confidential information
-                            without seller's prior written authorization from AICTEC
-                        </p>
+                        <span t-field="o.terms_en"/>
                     </div>
                 </div>
             </div>
+
+
             <p style="page-break-after:always;"></p>
             <div class="page text-right" dir="rtl"
                  style="font-family: 'Scheherazade', serif;font-size: 15px;margin-left:10px;margin-right:10px">
-
-                <div class="row text-center">
-                    <div class="col-6"
-                         style="border-left: 1px solid black;border-top: 1px solid black;border-right: 1px solid black;border-bottom: 1px solid black;">
-                        <strong>الضمان:</strong>
-                        <p>وفقا للقوانين المعمول بها فى المملكة ما لم يذكر</p>
-                        <strong>تركيب المنتج:</strong>
-                        <ul style="margin-right:5px;">
-                            <li>التركيب و البرمجة و التثبيت و الاختبار و التدريب و التشغيل غير المشمول بالتسعيرة الا اذا
-                                تم تضمينها
-                            </li>
-                            <li>يجب ان يتأكد الشريك من ان الائحة النهائية للمواد تحتوى على جميع المكونات و الخيارات و
-                                الملحقات اللازمة لتوفير الوظائف للمشروع المعين
-                            </li>
-                            <li>ستخضع مواد المخزون و شروط التوفر للبيع المسبق فى حالة عدم وجود طلب رسمى و اصدار شروط
-                                الدفع
-                            </li>
-                            <li>هناك اضطراب فى التوريد فى جميع انحاء العالم ونقص فى مواد الالكترونيات مثل اشباه الموصلات
-                                ورقائق الحاسوب والاسعار المتقلبة بسبب جائحة كوفيد 19 لذلك ينصح بشدة بتوقع حدوث تأخير فى
-                                التسليم و يجب على المستخدمين النهائيين تطبيق حالات الطوارئ المناسبة
-                            </li>
-                            <li>مراجعة و قبول الشروط و الاحكام و الملاحظات الخاصة بمقترح شركة تقدم العالمية التجارى من
-                                قبل المشترى هنا تعتبر جزءا من امر الشراء للعميل
-                            </li>
-                        </ul>
-
-                    </div>
-                    <div class="col-6"
-                         style="border-left: 1px solid black;border-top: 1px solid black;border-right: 1px solid black;border-bottom: 1px solid black;">
-                        <strong>Warranty</strong>
-                        <p>As Per KSA standers unless stated</p>
-                        <strong>Product Installation</strong>
-                        <ul style="margin-right:10px;">
-                            <li>installation , configuration, testing &amp; commissioning of the above is not included
-                                unless stated
-                            </li>
-                            <li>the partner should ensure that the ultimate BOM contains all necessary components ,
-                                options and accessories to provice the functions for the designated project
-                            </li>
-                            <li>Stock materials and availability terms will be subjected to prior sale , in the case of
-                                not an officialordering material and releasing payment terms
-                            </li>
-                            <li>there is a worldwide supply chain disruption , electronics material shortage such as
-                                semiconductor and computer chips and volatile prices , due to the covid 19 pandemic ,
-                                thus , it is highly advised to delays in delivery should be applied by the end-users
-                            </li>
-                            <li>review and accept conditions, terms , and notes of commercial proposal by buyer here are
-                                considered part of intended client PO
-                            </li>
-                        </ul>
-                    </div>
-
-                </div>
-                <br></br>
-                <br></br>
                 <table class="table table-bordered" dir="ltr"
                        style="line-height:0.5px;font-size:20px;text-align:center;margin-top:5px;margin-bottom:5px;">
                     <tr>
@@ -447,18 +325,19 @@
                     <tr style="border-left: 1px solid black;border-top: 1px solid black;border-right: 1px solid black;border-bottom: 1px solid black;">
                         <th>Sender</th>
                         <td style="background-color: #ffffff;">
+                            <span t-field="o.user_id.name"/>
                         </td>
                     </tr>
                     <tr style="background-color: #dcdcdc;border-left: 1px solid black;border-top: 1px solid black;border-right: 1px solid black;border-bottom: 1px solid black;">
                         <th>Mobile</th>
                         <td style="background-color: #dcdcdc;">
-                            <span t-field="o.partner_id.mobile"/>
+                            <span t-field="o.user_id.mobile"/>
                         </td>
                     </tr>
                     <tr style="border-left: 1px solid black;border-top: 1px solid black;border-right: 1px solid black;border-bottom: 1px solid black;">
                         <th>Email</th>
                         <td style="background-color: #ffffff;">
-                            <span t-field="o.partner_id.email"/>
+                            <span t-field="o.user_id.email"/>
                         </td>
                     </tr>
                     <tr style="background-color: #dcdcdc;border-left: 1px solid black;border-top: 1px solid black;border-right: 1px solid black;border-bottom: 1px solid black;">
