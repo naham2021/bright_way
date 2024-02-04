@@ -343,7 +343,7 @@
                     <tr style="background-color: #dcdcdc;border-left: 1px solid black;border-top: 1px solid black;border-right: 1px solid black;border-bottom: 1px solid black;">
                         <th>Job Position</th>
                         <td style="background-color: #dcdcdc;">
-                            <span/>
+                            <span t-field="o.user_id.job_id.name"/>
                         </td>
                     </tr>
                 </table>

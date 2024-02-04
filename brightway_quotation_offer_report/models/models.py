@@ -15,6 +15,12 @@ class ResPartner(models.Model):
 
 
 
+class ResUsers(models.Model):
+    _inherit = 'res.users'
+
+    job_id = fields.Many2one(comodel_name="hr.job", string="Job Position")
+
+
 class SaleOrder(models.Model):
     _inherit = 'sale.order'
 
