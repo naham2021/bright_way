@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <record id="res_config_settings_inherit_view_form" model="ir.ui.view">
+            <field name="name">res.config.settings.inherit.view.form.inherit.account</field>
+            <field name="model">res.config.settings</field>
+            <field name="inherit_id" ref="sale.res_config_settings_view_form"/>
+            <field name="arch" type="xml">
+
+                <xpath expr="//div[@id='ups']" position="after">
+
+                    <div class="col-12 col-lg-6 o_setting_box">
+                        <div class="o_setting_left_pane">
+                            <field name="english_use_sale_terms"/>
+                        </div>
+                        <div class="o_setting_right_pane">
+                            <label for="english_use_sale_terms"/>
+                            <div class="text-muted">
+                                Show standard terms &amp; conditions on invoices/orders
+                            </div>
+                            <div class="content-group" attrs="{'invisible': [('english_use_sale_terms','=',False)]}">
+                                <field name="english_sale_terms" force_save='1'
+                                       placeholder="Insert your English terms &amp; conditions here..."/>
+
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-12 col-lg-6 o_setting_box">
+                        <div class="o_setting_left_pane">
+                            <field name="ar_use_sale_terms"/>
+                        </div>
+                        <div class="o_setting_right_pane">
+                            <label for="ar_use_sale_terms"/>
+                            <div class="text-muted">
+                                Show standard terms &amp; conditions on invoices/orders
+                            </div>
+                            <div class="content-group" attrs="{'invisible': [('ar_use_sale_terms','=',False)]}">
+                                <field name="ar_invoice_terms"
+                                       placeholder="Insert your English terms &amp; conditions here..."/>
+                            </div>
+                        </div>
+                    </div>
+
+                </xpath>
+            </field>
+        </record>
+    </data>
+</odoo>
