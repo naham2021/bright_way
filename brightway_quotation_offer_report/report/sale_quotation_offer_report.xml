@@ -299,12 +299,14 @@
                     <div class="col-6"
                          style="border-left: 1px solid black;border-top: 1px solid black;border-right: 1px solid black;border-bottom: 1px solid black;">
                         <strong>الشروط العامة</strong>
+                        <br></br>
                         <span t-field="o.terms_ar"/>
                     </div>
 
                     <div class="col-6"
                          style="border-left: 1px solid black;border-top: 1px solid black;border-right: 1px solid black;border-bottom: 1px solid black;">
                         <strong>General Conditions</strong>
+                        <br></br>
                         <span t-field="o.terms_en"/>
                     </div>
                 </div>
