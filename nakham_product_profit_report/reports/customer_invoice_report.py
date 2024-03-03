@@ -19,7 +19,7 @@ class CustomerInvoicesReport(models.AbstractModel):
         # debit -> out_invoice
 
         domain = [
-            ('type', 'in', ['out_invoice', 'out_refund']),
+            ('move_type', 'in', ['out_invoice', 'out_refund']),
             ('state', '=', 'posted'),
             ('journal_id.user_ids', 'in', self._uid)]
         if data['form']['date_from']:
@@ -39,13 +39,13 @@ class CustomerInvoicesReport(models.AbstractModel):
             # journal_ids = invoice.line_ids.filtered(
             #     lambda ji: ji.account_id.id == 23 and ji.name == invoice.name and ji.quantity == invoice.quantity)
             # if journal_ids:
-            #     if journal_ids[0].move_id.type == 'out_invoice':
+            #     if journal_ids[0].move_id.move_type == 'out_invoice':
             #         cost = journal_ids[0].debit
-            #     if journal_ids[0].move_id.type == 'out_refund':
+            #     if journal_ids[0].move_id.move_type == 'out_refund':
             #         cost = journal_ids[0].credit
             untaxed_amount = invoice.amount_untaxed
             total_cost = invoice.total_cost
-            if invoice.type == 'out_refund':
+            if invoice.move_type == 'out_refund':
                 untaxed_amount *= -1
                 total_cost *= -1
             invoices_dict.append({
@@ -77,7 +77,7 @@ class CustomerInvoicesReport(models.AbstractModel):
     #
     #     # debit -> out_invoice
     #     domain = [
-    #         ('move_id.type', 'in', ['out_invoice', 'out_refund']),
+    #         ('move_id.move_type', 'in', ['out_invoice', 'out_refund']),
     #         ('move_id.state', '=', 'posted')]
     #     if data['form']['product_ids']:
     #         domain.append(('product_id.id', 'in', data['form']['product_ids']))
@@ -97,9 +97,9 @@ class CustomerInvoicesReport(models.AbstractModel):
     #         journal_ids = invoice.move_id.line_ids.filtered(
     #             lambda ji: ji.account_id.id == 23 and ji.name == invoice.name and ji.quantity == invoice.quantity)
     #         if journal_ids:
-    #             if journal_ids[0].move_id.type == 'out_invoice':
+    #             if journal_ids[0].move_id.move_type == 'out_invoice':
     #                 cost = journal_ids[0].debit
-    #             if journal_ids[0].move_id.type == 'out_refund':
+    #             if journal_ids[0].move_id.move_type == 'out_refund':
     #                 cost = journal_ids[0].credit
     #         print('invoice price', invoice.price_unit)
     #         invoices_dict.append({

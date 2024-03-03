@@ -1,5 +1,5 @@
 Total Payable & Receivable 
-==============================
+==========================
 This module will make total payable and receivable field in customer and vendor form
 
 
@@ -13,8 +13,10 @@ Company
 
 Credits
 -------
-* Developer: 	Niyas Raphy@cybrosys
-    		Nimisha Murali@cybrosys(v13)
+* Developer: Niyas Raphy @ cybrosys
+(v13) Nimisha Murali @ cybrosys
+(v14, v15) Aneesh @ Cybrosys
+(v16) Viswanth @ cybrosys
 
 Contacts
 --------

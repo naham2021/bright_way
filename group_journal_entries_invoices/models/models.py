@@ -8,15 +8,15 @@ class AccounrMove(models.Model):
 
     journal_visible = fields.Boolean(compute='_compute_journal_visible', default=False)
 
-    @api.depends('type')
+    @api.depends('move_type')
     def _compute_journal_visible(self):
         for rec in self:
             print('llllllllllllllllllllllll')
-            print("rec.type  ",rec.type)
+            print("rec.move_type  ",rec.move_type)
             print('rec.journal_visible ', rec.journal_visible)
             print('rec.journal_visible ', rec.journal_id.id)
             rec.company_id = rec.journal_id.company_id.id
-            if rec.type == 'entry':
+            if rec.move_type == 'entry':
                 rec.journal_visible = True
             else:
                 if self.env.user.has_group('group_journal_entries_invoices.group_journal_invoices'):

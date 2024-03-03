@@ -1,45 +1,95 @@
 # -*- coding: utf-8 -*-
 
 # Created on 2018-11-26
-# author: 广州尚鹏，https://www.sunpop.cn
+# author: 欧度智能，https://www.odooai.cn
 # email: 300883@qq.com
-# resource of Sunpop
+# resource of odooai
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
 
 # Odoo12在线用户手册（长期更新）
-# https://www.sunpop.cn/documentation/user/12.0/en/index.html
+# https://www.odooai.cn/documentation/user/12.0/en/index.html
 
 # Odoo12在线开发者手册（长期更新）
-# https://www.sunpop.cn/documentation/12.0/index.html
+# https://www.odooai.cn/documentation/12.0/index.html
 
 # Odoo10在线中文用户手册（长期更新）
-# https://www.sunpop.cn/documentation/user/10.0/zh_CN/index.html
+# https://www.odooai.cn/documentation/user/10.0/zh_CN/index.html
 
 # Odoo10离线中文用户手册下载
-# https://www.sunpop.cn/odoo10_user_manual_document_offline/
+# https://www.odooai.cn/odoo10_user_manual_document_offline/
 # Odoo10离线开发手册下载-含python教程，jquery参考，Jinja2模板，PostgresSQL参考（odoo开发必备）
-# https://www.sunpop.cn/odoo10_developer_document_offline/
+# https://www.odooai.cn/odoo10_developer_document_offline/
 # description:
 
 {
-    'name': 'Customize odoo OEM (Boost, My Odoo)',
-    'version': '13.20.05.10',
-    'author': 'Sunpop.cn',
+    'name': 'odoo 16 Customize OEM(Boost, Data reset)',
+    'version': '16.23.05.25',
+    'author': 'odooai.cn',
     'category': 'Productivity',
-    'website': 'https://www.sunpop.cn',
+    'website': 'https://www.odooai.cn',
     'license': 'LGPL-3',
     'sequence': 2,
+    'images': ['static/description/banner.gif'],
     'summary': """
-    1 click customize odoo, reset data. For quick develop. Set brand, boost, reset data, debug. Language Switcher. 
+    1 click customize odoo, reset data. For quick develop. Set brand, boost, reset data, debug. Language Switcher.
     Easy Delete data.reset account chart.
-    customize my odoo. 
+    customize my odoo.
     """,
+    'depends': [
+        'app_common',
+        'base_setup',
+        'web',
+        'mail',
+        'iap',
+        # 'digest',
+        # when enterprise
+        # 'web_mobile'
+    ],
+    'data': [
+        'security/res_groups.xml',
+        'security/ir.model.access.csv',
+        'views/app_odoo_customize_views.xml',
+        'views/app_theme_config_settings_views.xml',
+        'views/res_config_settings_views.xml',
+        'views/ir_views.xml',
+        'views/ir_module_module_views.xml',
+        'views/ir_translation_views.xml',
+        'views/ir_ui_menu_views.xml',
+        'views/ir_ui_view_views.xml',
+        'views/ir_model_fields_views.xml',
+        'views/ir_model_data_views.xml',
+        # data
+        'data/ir_config_parameter_data.xml',
+        'data/ir_module_module_data.xml',
+        # 'data/digest_template_data.xml',
+        'data/res_company_data.xml',
+    ],
+    # 'qweb': [
+    #     'static/src/xml/*.xml',
+    # ],
+    'assets': {
+        'web.assets_backend': [
+            'app_odoo_customize/static/src/scss/app.scss',
+            'app_odoo_customize/static/src/scss/ribbon.scss',
+            'app_odoo_customize/static/src/scss/dialog.scss',
+            'app_odoo_customize/static/src/js/user_menu.js',
+            'app_odoo_customize/static/src/js/ribbon.js',
+            'app_odoo_customize/static/src/js/dialog.js',
+            'app_odoo_customize/static/src/webclient/*.js',
+            'app_odoo_customize/static/src/webclient/*.xml',
+        ],
+    },
+    'pre_init_hook': 'pre_init_hook',
+    'post_init_hook': 'post_init_hook',
+    'installable': True,
+    'application': True,
+    'auto_install': True,
     'description': """
-    
+
     App Customize Odoo (Change Title,Language,Documentation,Quick Debug)
     ============
     White label odoo.
-    Support Odoo 13, 12, 11, 10, 9.
+    Support odoo 16,15,14, 13, 12, 11, 10, 9.
     You can config odoo, make it look like your own platform.
     1. Deletes Odoo label in footer
     2. Replaces "Odoo" in Windows title
@@ -73,13 +123,23 @@
     30. 1 key export app translate file like .po file.
     31. Show or hide odoo Referral in the top menu.
     32. Fix odoo bug of complete name bug of product category and stock location..
-    
+    33. Add Demo Ribbon Setting.
+    34. Add Remove all quality data.
+    35. Fixed for odoo 14.
+    36. Add refresh translate for multi module.
+    37. Easy noupdate manage for External Identifiers(xml_id)
+    38. Add Draggable Dialog enable.
+    39. Only erp manager can see debug menu..
+    40. Fix support for enterprise version.
+    41. Fix odoo bug, when click Preferences menu not hide in mobile.
+    42. Add menu navbar setup for top or bottom. navigator footer support.
+
     This module can help to white label the Odoo.
     Also helpful for training and support for your odoo end-user.
     The user can get the help document just by one click.
     ## 在符合odoo开源协议的前提下，去除odoo版权信息，自定义你的odoo
     可完全自行设置下列 odoo 选项，让 odoo 看上去像是你的软件产品
-    支持Odoo 13,12, 11, 10, 9 版本，社区版企业版通用    
+    支持odoo 16,15,14,13,12, 11, 10, 9 版本，社区版企业版通用
     1. 删除菜单导航页脚的 Odoo 标签
     2. 将弹出窗口中 "Odoo" 设置为自定义名称
     3. 自定义用户菜单中的 Documentation, Support, About 的链接
@@ -111,43 +171,15 @@
     29. App版本比较，快速查看可本地更新的模块
     30. 一键导出翻译文件 po
     31. 显示或去除 odoo 推荐
-    32. 增加修复品类及区位名的操作 
+    32. 增加修复品类及区位名的操作
+    33. 增加 Demo 的显示设置
+    34. 增加清除质检数据
+    35. 优化至odoo14适用
+    36. 可为多个模块强制更新翻译
+    37. noupdate字段的快速管理，主要针对 xml_id
+    38. 对话框可拖拽
+    39. 只有系统管理员可以操作快速debug
+    40. 增强对企业版的支持
+    41. 修正odoo原生移动端菜单bug，点击个人设置时，原菜单不隐藏等
     """,
-    'images': ['static/description/banner.gif'],
-    'depends': [
-        'base_setup',
-        'web',
-        'mail',
-        'iap',
-        # 'digest',
-        # when enterprise
-        # 'web_mobile'
-    ],
-    'data': [
-        'views/app_odoo_customize_views.xml',
-        'views/app_theme_config_settings_views.xml',
-        'views/res_config_settings_views.xml',
-        'views/ir_views.xml',
-        'views/ir_module_module_views.xml',
-        'views/ir_ui_menu_views.xml',
-        # data
-        'data/ir_config_parameter.xml',
-        'data/ir_module_module.xml',
-        # 'data/digest_template_data.xml',
-        'data/res_company_data.xml',
-        'data/res_groups.xml',
-        'security/ir.model.access.csv',
-    ],
-    'qweb': [
-        'static/src/xml/*.xml',
-    ],
-    'demo': [],
-    'test': [],
-    'css': [],
-    'js': [],
-    # 'pre_init_hook': 'pre_init_hook',
-    # 'post_init_hook': 'post_init_hook',
-    'installable': True,
-    'application': True,
-    'auto_install': True,
 }

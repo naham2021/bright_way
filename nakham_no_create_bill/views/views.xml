@@ -8,12 +8,14 @@
             <field name="arch" type="xml">
 
                 <xpath expr="//button[@name='action_view_invoice']" position="replace">
-                    <button type="object"  name="action_view_invoice_new"
+                    <button type="object" name="action_view_invoice_new"
                             class="oe_stat_button"
-                            icon="fa-pencil-square-o" attrs="{'invisible':['|', ('invoice_count', '=', 0), ('state', 'in', ('draft','sent','to approve'))]}">
+                            icon="fa-pencil-square-o"
+                            attrs="{'invisible':['|', ('invoice_count', '=', 0), ('state', 'in', ('draft','sent','to approve'))]}">
                         <field name="invoice_count" widget="statinfo" string="Vendor Bills"/>
                         <field name='invoice_ids' invisible="1"/>
-                    </button>                </xpath>
+                    </button>
+                </xpath>
 
             </field>
         </record>
@@ -25,14 +27,15 @@
             <field name="arch" type="xml">
 
                 <xpath expr="//button[@name='action_view_invoice'][1]" position="attributes">
-                    <attribute name="attrs">{'invisible': ['|', '|', ('state', 'not in', ('purchase', 'done')), ('invoice_status', 'not in', ('no','to invoice', 'invoiced')), ('order_line', '=', [])]}</attribute>
+                    <attribute name="attrs">{'invisible': ['|', '|', ('state', 'not in', ('purchase', 'done')),
+                        ('invoice_status', 'not in', ('no','to invoice', 'invoiced')), ('order_line', '=', [])]}
+                    </attribute>
 
                 </xpath>
 
 
             </field>
         </record>
-
 
 
     </data>

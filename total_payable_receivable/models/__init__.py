@@ -3,9 +3,8 @@
 #
 #    Cybrosys Technologies Pvt. Ltd.
 #
-#    Copyright (C) 2019-TODAY Cybrosys Technologies(<https://www.cybrosys.com>).
-#    Author: Niyas Raphy @cybrosys(odoo@cybrosys.com)
-#
+#    Copyright (C) 2022-TODAY Cybrosys Technologies(<https://www.cybrosys.com>).
+#    Author: odoo@cybrosys.com
 #    You can modify it under the terms of the GNU AFFERO
 #    GENERAL PUBLIC LICENSE (AGPL v3), Version 3.
 #

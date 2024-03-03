@@ -12,10 +12,10 @@ class AccountMoveInherit(models.Model):
     l10n_sa_qr_code_str = fields.Char(string='Zatka QR Code', compute='_compute_qr_code_str')
     l10n_sa_confirmation_datetime = fields.Datetime(string='Confirmation Date', copy=False,readonly=True,default=fields.Datetime.now())
 
-    @api.depends('company_id.country_id.code', 'type')
+    @api.depends('company_id.country_id.code', 'move_type')
     def _compute_show_delivery_date(self):
         for move in self:
-            move.l10n_sa_show_delivery_date = move.company_id.country_id.code == 'SA' and move.type in ('out_invoice', 'out_refund')
+            move.l10n_sa_show_delivery_date = move.company_id.country_id.code == 'SA' and move.move_type in ('out_invoice', 'out_refund')
 
     @api.depends('amount_total', 'amount_untaxed', 'l10n_sa_confirmation_datetime', 'company_id', 'company_id.vat')
     def _compute_qr_code_str(self):
@@ -46,7 +46,7 @@ class AccountMoveInherit(models.Model):
         res = super().post()
         for record in self:
             print('kkkkk',record.company_id.country_id.code)
-            if record.company_id.country_id.code == 'SA' and record.type in ('out_invoice', 'out_refund'):
+            if record.company_id.country_id.code == 'SA' and record.move_type in ('out_invoice', 'out_refund'):
                 if not record.l10n_sa_show_delivery_date:
                     raise UserError(_('Delivery Date cannot be empty'))
                 if record.l10n_sa_delivery_date < record.invoice_date:

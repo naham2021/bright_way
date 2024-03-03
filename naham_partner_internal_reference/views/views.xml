@@ -16,6 +16,7 @@
                         <field name="ref" default_focus="1" placeholder="Reference"/>
                     </h1>
                     <label for="name" string="Name"/>
+                    <field name="name" placeholder="Name"/>
                 </xpath>
             </field>
         </record>

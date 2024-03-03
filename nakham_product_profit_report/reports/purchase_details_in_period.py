@@ -15,7 +15,7 @@ class CustomerInvoicesRepoert(models.AbstractModel):
         # ('account_id', '=', 19)
         domain = [
             ('move_id.state', '=', 'posted'),
-            ('move_id.type', 'in', ['out_invoice', 'out_refund'])]
+            ('move_id.move_type', 'in', ['out_invoice', 'out_refund'])]
         if data['form']['product_ids']:
             domain.append(('product_id.id', 'in', data['form']['product_ids']))
         if data['form']['date_from']:
@@ -31,7 +31,7 @@ class CustomerInvoicesRepoert(models.AbstractModel):
         lines = self.env['account.move.line'].search(domain)
         print(lines)
         lines_dict = []
-        account_type_id = self.env.ref('account.data_account_type_direct_costs')
+        account_type_id = self.env.ref('accounting_pdf_reports.data_account_type_direct_costs')
         total_total_price = 0.0
         total_total_cost = 0.0
         total_total_profit = 0.0
@@ -41,9 +41,9 @@ class CustomerInvoicesRepoert(models.AbstractModel):
                 ('move_id.id', '=', line.move_id.id),
                 ('exclude_from_invoice_tab', '=', True),
                 ('product_id.id', '=', line.product_id.id),
-                ('account_id.user_type_id.id', '=', account_type_id.id)
+                # ('account_id.user_type_id.id', '=', account_type_id.id)
             ]
-            move_type = line.move_id.type
+            move_type = line.move_id.move_type
             line_ids = self.env['account.move.line'].search(domain)
             if move_type == 'out_invoice':
                 total_cost = sum(line_ids.mapped('debit')) or 0.0

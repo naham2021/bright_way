@@ -633,7 +633,7 @@
         </record>
       <menuitem id="sale_report_admin" name="Sales Analysis" parent="sale.menu_sale_report" action="sale_report_action_dashboard_2" groups="nakham_sales_team_rule.group_admin_system" />
 
-        <record id="sale_enterprise.sale_report_action_dashboard" model="ir.actions.act_window">
+        <record id="website_sale.sale_report_action_dashboard" model="ir.actions.act_window">
             <field name="name">Sales Analysis</field>
             <field name="res_model">sale.report</field>
             <field name="domain">['|','|',('team_id.Accountant_id', '=', uid),('team_id.user_id', '=', uid),('team_id.member_ids', '=', uid)]</field>

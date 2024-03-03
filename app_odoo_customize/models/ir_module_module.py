@@ -14,7 +14,7 @@ class IrModule(models.Model):
     # installed_version = fields.Char('Latest Version', compute='_get_latest_version')
     # latest_version = fields.Char('Installed Version', readonly=True)
 
-    local_updatable = fields.Boolean('Local updatable', compute='_get_latest_version', default=False, store=True)
+    local_updatable = fields.Boolean('Local updatable', compute=False, default=False, store=True)
 
     def module_multi_uninstall(self):
         """ Perform the various steps required to uninstall a module completely
@@ -24,6 +24,34 @@ class IrModule(models.Model):
         modules = self.browse(self.env.context.get('active_ids'))
         [module.button_immediate_uninstall() for module in modules if module not in ['base', 'web']]
 
+    # 更新翻译，当前语言
+    def module_multi_refresh_po(self):
+        lang = self.env.user.lang
+        modules = self.filtered(lambda r: r.state == 'installed')
+        # 先清理, odoo原生经常清理不干净
+        # odoo 16中，不再使用 ir.translation，直接使用json字段
+        # for rec in modules:
+        #     translate = self.env['ir.translation'].search([
+        #         ('lang', '=', lang),
+        #         ('module', '=', rec.name)
+        #     ])
+        #     translate.sudo().unlink()
+        # 再重载
+        modules._update_translations(filter_lang=lang, overwrite=True)
+        # odoo 16翻译模式改变，仍需更新模块
+        return {
+            'type': 'ir.actions.client',
+            'tag': 'display_notification',
+            'target': 'new',
+            'params': {
+                'message': _("The languages that you selected have been successfully update.\
+                            You still need to Upgrade the apps to make it worked."),
+                'type': 'success',
+                'sticky': False,
+                'next': {'type': 'ir.actions.act_window_close'},
+            }
+        }
+
     def button_get_po(self):
         self.ensure_one()
         action = self.env.ref('app_odoo_customize.action_server_module_multi_get_po').read()[0]
@@ -32,12 +60,20 @@ class IrModule(models.Model):
             })
         return action
 
-    @api.depends('name', 'latest_version', 'state')
-    def _get_latest_version(self):
+    def update_list(self):
+        res = super(IrModule, self).update_list()
         default_version = modules.adapt_version('1.0')
-        for module in self:
-            module.local_updatable = False
-            module.installed_version = self.get_module_info(module.name).get('version', default_version)
-            if module.installed_version and module.latest_version and operator.gt(module.installed_version, module.latest_version):
-                module.local_updatable = True
-
+        known_mods = self.with_context(lang=None).search([])
+        known_mods_names = {mod.name: mod for mod in known_mods}
+        # 处理可更新字段， 不要compute，会出错
+        for mod_name in modules.get_modules():
+            mod = known_mods_names.get(mod_name)
+            installed_version = self.get_module_info(mod.name).get('version', default_version)
+            if installed_version and mod.latest_version and operator.gt(installed_version, mod.latest_version):
+                local_updatable = True
+            else:
+                local_updatable = False
+            if mod.local_updatable != local_updatable:
+                mod.write({'local_updatable': local_updatable})
+            
+        return res
