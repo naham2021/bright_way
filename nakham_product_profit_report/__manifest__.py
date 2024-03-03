@@ -20,7 +20,7 @@
     'version': '0.1',
 
     # any module necessary for this one to work correctly
-    'depends': ['base', 'product', 'account', 'nakham_required_fields_customer', 'naham_cost_margin_access'],
+    'depends': ['base', 'product', 'account', 'nakham_required_fields_customer', 'naham_cost_margin_access', 'accounting_pdf_reports'],
 
     # always loaded
     'data': [

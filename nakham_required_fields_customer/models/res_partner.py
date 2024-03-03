@@ -6,7 +6,7 @@ from odoo import models, fields, api
 class ResPartner(models.Model):
     _inherit = 'res.partner'
 
-    is_customer = fields.Boolean(string="Customer",compute="_compute_is_customer"  )
+    is_customer = fields.Boolean(string="Customer",compute="_compute_is_customer" ,store=True )
 
     @api.depends("customer_rank")
     def _compute_is_customer(self):

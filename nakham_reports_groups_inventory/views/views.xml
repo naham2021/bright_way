@@ -4,7 +4,7 @@
             id="stock_enterprise.stock_dashboard_menuitem"
             name="Warehouse Analysis"
             parent="stock.menu_warehouse_report"
-            action="stock_enterprise.stock_report_dashboard_action"
+            action="stock_enterprise.stock_report_action_performance"
         groups="nakham_reports_groups_inventory.group_warehouse_analysis"  />
           <menuitem id="unreserved_qty_script.menu_unreserved_qty_action"
                     name="Unreserved Qty"
@@ -14,12 +14,12 @@
               parent="stock.menu_warehouse_report" sequence="100"
               action="stock.action_view_quants"
                   groups="nakham_reports_groups_inventory.group_inventory_report" />
-    <menuitem id="stock.menu_forecast_inventory" name="Forecasted Inventory"
-              parent="stock.menu_warehouse_report" sequence="101" action="stock.report_stock_quantity_action"
-    groups="nakham_reports_groups_inventory.group_forecasted_inventory"/>
-        <menuitem id="stock_account.menu_valuation" name="Inventory Valuation" parent="stock.menu_warehouse_report"
-                  sequence="110" action="stock_account.action_stock_inventory_valuation"
-        groups="nakham_reports_groups_inventory.group_inventory_valuation"/>
+<!--    <menuitem id="stock.menu_forecast_inventory" name="Forecasted Inventory"-->
+<!--              parent="stock.menu_warehouse_report" sequence="101" action="stock.report_stock_quantity_action"-->
+<!--    groups="nakham_reports_groups_inventory.group_forecasted_inventory"/>-->
+<!--        <menuitem id="stock_account.menu_valuation" name="Inventory Valuation" parent="stock.menu_warehouse_report"-->
+<!--                  sequence="110" action="stock_account.action_stock_inventory_valuation"-->
+<!--        groups="nakham_reports_groups_inventory.group_inventory_valuation"/>-->
 
 <menuitem action="stock.stock_move_action" id="stock.stock_move_menu" parent="stock.menu_warehouse_report" sequence="140" groups="nakham_reports_groups_inventory.group_stock_moves"/>
     <menuitem

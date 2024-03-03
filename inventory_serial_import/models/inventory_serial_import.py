@@ -51,9 +51,6 @@ class stock(models.Model):
                 if self.product_id != data.product_id:
                     raise UserError(_('Serial Number %s does not belong to product - "%s".') % (str(vals), self.product_id.name))
 
-            if len(list(filter(None, data_list))) > self.product_uom_qty:
-                raise UserError('Serial number count is greater than the Initial Demand')
-
             if self.product_qty == self.quantity_done and self.move_line_nosuggest_ids.lot_id:
                 raise UserError(_('Serial Number Already Exist'))
 

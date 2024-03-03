@@ -8,9 +8,9 @@ class account_invoice(models.Model):
         print('_get_default_analytic_account')
         user = self.env['res.users'].search([('id','=',self.env.uid)], limit=1)
         analytic = self.env['account.analytic.account'].search([('id','=',user.analytic_ids.ids)], limit=1)
-        print('self.move_id.type ',self.move_id.type)
-        if self.move_id.type != False:
-            if self.move_id.type in ['out_invoice', 'out_refund', 'in_invoice', 'in_refund', 'out_receipt', 'in_receipt']:
+        print('self.move_id.type ',self.move_id.move_type)
+        if self.move_id.move_type != False:
+            if self.move_id.move_type in ['out_invoice', 'out_refund', 'in_invoice', 'in_refund', 'out_receipt', 'in_receipt']:
                 return analytic
             else:
                 return False

@@ -23,7 +23,7 @@
             <field name="inherit_id" ref="account.view_account_payment_form"/>
             <field name="arch" type="xml">
 
-                <xpath expr="//field[@name='communication']" position="after">
+                <xpath expr="//field[@name='ref']" position="after">
                     <field name="payment_user_id" force_save="1"/>
                     <field name="team_id" force_save="1"/>
                 </xpath>

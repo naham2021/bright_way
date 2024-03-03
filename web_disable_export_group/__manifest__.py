@@ -11,11 +11,16 @@
     'website': 'https://github.com/OCA/web',
     'category': 'Web',
     'depends': [
-        'web','account',
+        'web', 'account',
     ],
     'data': [
         'security/groups.xml',
-        'templates/assets.xml',
+        # 'templates/assets.xml',
     ],
+    'assets': {
+        "web.assets_backend": [
+            "web_disable_export_group/static/src/js/disable_export_group.js",
+        ],
+    },
     'installable': True,
 }

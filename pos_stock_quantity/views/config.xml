@@ -5,7 +5,7 @@
         <field name="model">pos.config</field>
         <field name="inherit_id" ref="point_of_sale.pos_config_view_form"/>
         <field name="arch" type="xml">
-            <xpath expr='//div[@id="inventory_location"]' position='after'>
+            <xpath expr='//form//sheet' position='inside'>
                 <h2>Pos Stock</h2>
                 <div class="row mt16 o_settings_container" id="pos_stock">
                     <div class="col-xs-12 col-md-6 o_setting_box"

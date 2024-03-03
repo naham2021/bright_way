@@ -19,7 +19,7 @@
     'version': '0.1',
 
     # any module necessary for this one to work correctly
-    'depends': ['base','nakham_customer_area_sequence','account','account_reports','product','account_asset'],
+    'depends': ['base','nakham_customer_area_sequence','account','account_reports','product','account_asset', 'point_of_sale'],
 
     # always loaded
     'data': [
