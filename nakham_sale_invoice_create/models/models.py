@@ -14,5 +14,5 @@ class SaleOrderInherit(models.Model):
     terms_ar = fields.Char()
     terms_en = fields.Char()
     warranty = fields.Char()
-    payment_id = fields.many2one('account.payment')
+    payment_id = fields.Many2one('account.payment')
     bank_account = fields.Char()
