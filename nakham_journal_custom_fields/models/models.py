@@ -11,6 +11,9 @@ class AccountMove(models.Model):
     picking_id = fields.Many2one('stock.picking', related='stock_move_id.picking_id')
     account_bank_statement_id = fields.Many2one('account.bank.statement')
 
+    # For Migration Errors
+    inventory_id = fields.Char()
+
 
 class AccountPayment(models.Model):
     _inherit = "account.payment"

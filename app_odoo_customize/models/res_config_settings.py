@@ -33,7 +33,8 @@ class ResConfigSettings(models.TransientModel):
                                     config_parameter='app_show_share')
     app_show_poweredby = fields.Boolean('Show Powered by Odoo', help="Uncheck to hide the Powered by text",
                                         config_parameter='app_show_poweredby')
-    group_show_author_in_apps = fields.Boolean(string="Show Author in Apps Dashboard", implied_group='app_odoo_customize.group_show_author_in_apps',
+    group_show_author_in_apps = fields.Boolean(string="Show Author in Apps Dashboard",
+                                               implied_group='app_odoo_customize.group_show_author_in_apps',
                                                help="Uncheck to Hide Author and Website in Apps Dashboard")
     module_odoo_referral = fields.Boolean('Show Odoo Referral', help="Uncheck to remove the Odoo Referral")
 
@@ -56,7 +57,8 @@ class ResConfigSettings(models.TransientModel):
     ], config_parameter='app_navbar_pos_mobile')
 
     def set_module_url(self):
-        sql = "UPDATE ir_module_module SET website = '%s' WHERE license like '%s' and website <> ''" % (self.app_enterprise_url, 'OEEL%')
+        sql = "UPDATE ir_module_module SET website = '%s' WHERE license like '%s' and website <> ''" % (
+        self.app_enterprise_url, 'OEEL%')
         try:
             self._cr.execute(sql)
             self._cr.commit()
@@ -100,7 +102,7 @@ class ResConfigSettings(models.TransientModel):
             except Exception as e:
                 _logger.warning('reset sequence data error: %s,%s', line, e)
         return True
-    
+
     def remove_sales(self):
         to_removes = [
             # 清除销售单据
@@ -488,3 +490,9 @@ class ResConfigSettings(models.TransientModel):
             except:
                 pass
         return True
+
+    # For Migration Errors
+    english_use_sale_terms = fields.Char()
+    english_sale_terms = fields.Char()
+    ar_use_sale_terms = fields.Char()
+    ar_invoice_terms = fields.Char()
