@@ -26,6 +26,7 @@
                 </form>
             </field>
         </record>
+
         <record id="view_partner_area_tree" model="ir.ui.view">
             <field name="name">view.partner.area.tree</field>
             <field name="model">partner.area</field>

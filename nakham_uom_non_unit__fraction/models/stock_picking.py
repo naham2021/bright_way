@@ -32,6 +32,6 @@ class stock_move_line(models.Model):
                 raise ValidationError(_("Sorry .. you must Selected Product And UOM !!"))
 
             if self.product_uom.is_non_fraction == True:
-                if self.qty_done%1 != 0:
+                if self.quantity_done%1 != 0:
                     raise ValidationError(_("Sorry .. you must Enter Integer Number !!"))
 

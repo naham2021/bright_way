@@ -1,53 +1,53 @@
 <odoo>
     <data>
-<record id="purchase.access_product_product_purchase_manager" model="ir.model.access">
-    <field name="perm_create" eval="0"/>
-    <field name="perm_unlink" eval="0"/>
-</record>
+        <record id="purchase.access_product_product_purchase_manager" model="ir.model.access">
+            <field name="perm_create" eval="0"/>
+            <field name="perm_unlink" eval="0"/>
+        </record>
         <record id="sale.access_product_product_sale_manager" model="ir.model.access">
-    <field name="perm_create" eval="0"/>
-    <field name="perm_unlink" eval="0"/>
-</record>
+            <field name="perm_create" eval="0"/>
+            <field name="perm_unlink" eval="0"/>
+        </record>
         <record id="stock.access_product_product_stock_manager" model="ir.model.access">
-    <field name="perm_create" eval="0"/>
-    <field name="perm_unlink" eval="0"/>
-</record>
+            <field name="perm_create" eval="0"/>
+            <field name="perm_unlink" eval="0"/>
+        </record>
         <record id="point_of_sale.access_product_product_pos_manager" model="ir.model.access">
-    <field name="perm_create" eval="0"/>
-    <field name="perm_unlink" eval="0"/>
-</record>
+            <field name="perm_create" eval="0"/>
+            <field name="perm_unlink" eval="0"/>
+        </record>
         <record id="account.access_product_product_account_manager" model="ir.model.access">
-    <field name="perm_create" eval="0"/>
-    <field name="perm_unlink" eval="0"/>
-</record>
+            <field name="perm_create" eval="0"/>
+            <field name="perm_unlink" eval="0"/>
+        </record>
         <record id="product.access_product_product_manager" model="ir.model.access">
-    <field name="perm_create" eval="0"/>
-    <field name="perm_unlink" eval="0"/>
-</record>
+            <field name="perm_create" eval="0"/>
+            <field name="perm_unlink" eval="0"/>
+        </record>
         <record id="point_of_sale.access_product_template_pos_manager" model="ir.model.access">
-    <field name="perm_create" eval="0"/>
-    <field name="perm_unlink" eval="0"/>
-</record>
+            <field name="perm_create" eval="0"/>
+            <field name="perm_unlink" eval="0"/>
+        </record>
         <record id="purchase.access_product_template_purchase_manager" model="ir.model.access">
-    <field name="perm_create" eval="0"/>
-    <field name="perm_unlink" eval="0"/>
-</record>
+            <field name="perm_create" eval="0"/>
+            <field name="perm_unlink" eval="0"/>
+        </record>
         <record id="sale.access_product_template_sale_manager" model="ir.model.access">
-    <field name="perm_create" eval="0"/>
-    <field name="perm_unlink" eval="0"/>
-</record>
+            <field name="perm_create" eval="0"/>
+            <field name="perm_unlink" eval="0"/>
+        </record>
         <record id="stock.access_product_template_stock_manager" model="ir.model.access">
-    <field name="perm_create" eval="0"/>
-    <field name="perm_unlink" eval="0"/>
-</record>
+            <field name="perm_create" eval="0"/>
+            <field name="perm_unlink" eval="0"/>
+        </record>
         <record id="account.access_product_template_account_manager" model="ir.model.access">
-    <field name="perm_create" eval="0"/>
-    <field name="perm_unlink" eval="0"/>
-</record>
+            <field name="perm_create" eval="0"/>
+            <field name="perm_unlink" eval="0"/>
+        </record>
         <record id="product.access_product_template_manager" model="ir.model.access">
-    <field name="perm_create" eval="0"/>
-    <field name="perm_unlink" eval="0"/>
-</record>
+            <field name="perm_create" eval="0"/>
+            <field name="perm_unlink" eval="0"/>
+        </record>
 
         <record id="create_delete_product_group" model="res.groups">
             <field name="name">Create Delete product</field>
