@@ -37,8 +37,8 @@ class AccountMoveLine(models.Model):
         res = super(AccountMoveLine, self).unlink()
 
         # Check total_debit == total_credit in the related moves.
-        if self._context.get('check_move_validity', True):
-            moves._check_balanced()
+        # if self._context.get('check_move_validity', True):
+        #     moves._check_balanced()
 
         return res
 
