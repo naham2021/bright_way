@@ -1,4 +1,4 @@
-from odoo import models, fields, api,_,exceptions
+from odoo import models, fields, api, _, exceptions
 import json
 
 
@@ -6,11 +6,12 @@ class account_invoice(models.Model):
     _inherit = 'account.move'
 
     # journal_ids = fields.Many2many('account.journal',string='Payment Journals',compute='compute_journal_ids')
-    journal_ids = fields.Many2many('account.journal',string='Payment Journals')
+    journal_ids = fields.Many2many('account.journal', string='Payment Journals')
 
-    journal_id_name = fields.Char(string="Payment Method", required=False,compute='compute_journal_ids' )
+    journal_id_name = fields.Char(string="Payment Method", required=False)
+    # , compute='compute_journal_ids')
+
     # def compute_journal_ids(self):
-    #
     #     for rec in self:
     #         journals = []
     #         # print('rec.id :: ',rec.id)
